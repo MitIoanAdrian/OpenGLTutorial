@@ -1,0 +1,3 @@
+/Users/adrianm2/Desktop/TutorialApp/build/CMakeFiles/TutorialApp.dir
+/Users/adrianm2/Desktop/TutorialApp/build/CMakeFiles/ALL_BUILD.dir
+/Users/adrianm2/Desktop/TutorialApp/build/CMakeFiles/ZERO_CHECK.dir
