@@ -6,7 +6,9 @@
 //
 
 #include "Application.hpp"
-#include <GLFW/glfw3.h>
+#include <OGL.h>
+#include <VertexBuffer.h>
+#include <VertexLayout.h>
 #include <iostream>
 
 bool Application::initialize(const char *window_name, std::size_t width,
@@ -50,7 +52,15 @@ void Application::run() {
 
 void Application::update(const float delta_seconds) {
 
-  std::cout << delta_seconds << std::endl;
+  // VertexBuffer buff;
+  VertexLayout lay;
+
+  lay.AddVertexAttribute("asfg", 20);
+  lay.AddVertexAttribute("asdg", 25);
+
+  void *data = nullptr;
+
+  // buff.create(data,lay, 2);
 }
 
 void Application::render() {}

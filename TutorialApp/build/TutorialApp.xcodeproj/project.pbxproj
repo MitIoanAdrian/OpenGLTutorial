@@ -1,0 +1,760 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		32D2E09FCECF45D6B07D8537 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D3F50F0330764236922A162E /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				794B063A61FA0637CCE5081B /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				36C76C76AEAB4633A0982663 /* PBXTargetDependency */,
+				F5EBA9E98E3B4803AEA79970 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		7DFF38BBA4F44718917F1C96 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = ACAFD657C4A44285BE8B11C1 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				27F8F063B36FE42AA8BD5699 /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		090CEFF0F849450997675AC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00DC724D38804FE188E358CE /* main.cpp */; };
+		2A352200378F42C085FC5346 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33CB4CAEC9DA44CE8ACC8C4F /* Application.cpp */; };
+		7F43E01D2EE94DA6A307C7DD /* VertexLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D9D2BBA0A7E43E3B93556E7 /* VertexLayout.cpp */; };
+		D99594802875D69100383386 /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D995947E2875D69100383386 /* VertexBuffer.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		807711361AE040A9AB8AB8DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E2A885E394142FBA8051079 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EA2CFDA5EB641A7A361D5FF;
+			remoteInfo = TutorialApp;
+		};
+		AF8BFF5B74354761ACB55D73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E2A885E394142FBA8051079 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7DFF38BBA4F44718917F1C96;
+			remoteInfo = ZERO_CHECK;
+		};
+		B104869D953D49F4B97B1697 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E2A885E394142FBA8051079 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7DFF38BBA4F44718917F1C96;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00DC724D38804FE188E358CE /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		2A647EE5B8994735A40326A1 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		33CB4CAEC9DA44CE8ACC8C4F /* Application.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Application.cpp; path = src/Application.cpp; sourceTree = SOURCE_ROOT; };
+		3649BDA87EAE493FA3537F17 /* TutorialApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = TutorialApp; sourceTree = BUILT_PRODUCTS_DIR; };
+		42CEE43EAD924D208DC40DE7 /* VertexLayout.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = VertexLayout.h; path = include/VertexLayout.h; sourceTree = SOURCE_ROOT; };
+		59DC96407F5E4B20B03C1C17 /* VertexBuffer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = VertexBuffer.h; path = include/VertexBuffer.h; sourceTree = SOURCE_ROOT; };
+		5C504FF3D3B94870BEA011E5 /* OGL.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OGL.h; path = include/OGL.h; sourceTree = SOURCE_ROOT; };
+		6D9D2BBA0A7E43E3B93556E7 /* VertexLayout.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = VertexLayout.cpp; path = src/VertexLayout.cpp; sourceTree = SOURCE_ROOT; };
+		72C3EB1B3E5240999D258F8F /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		BCD39521BA514650AA15B68C /* Application.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Application.hpp; path = include/Application.hpp; sourceTree = SOURCE_ROOT; };
+		D995947E2875D69100383386 /* VertexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBuffer.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B34A411053024191BC28AF23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15C53C38C73C42C890B4379B /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				5C504FF3D3B94870BEA011E5 /* OGL.h */,
+				BCD39521BA514650AA15B68C /* Application.hpp */,
+				59DC96407F5E4B20B03C1C17 /* VertexBuffer.h */,
+				42CEE43EAD924D208DC40DE7 /* VertexLayout.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		1757D8457AFF4080A74274F6 = {
+			isa = PBXGroup;
+			children = (
+				3118D4A3CF6A4914B7CFE100 /* TutorialApp */,
+				7ACFEAF4FEB74748BCE80A19 /* ALL_BUILD */,
+				7ED54135D83246EC8D48356A /* Products */,
+				B841C57B0A474B2F83853BD1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3118D4A3CF6A4914B7CFE100 /* TutorialApp */ = {
+			isa = PBXGroup;
+			children = (
+				DF31E98879CA445A8068C625 /* Source Files */,
+				15C53C38C73C42C890B4379B /* Header Files */,
+				2A647EE5B8994735A40326A1 /* CMakeLists.txt */,
+			);
+			name = TutorialApp;
+			sourceTree = "<group>";
+		};
+		7ACFEAF4FEB74748BCE80A19 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				906B3AC2040B4722BC3C0E84 /* CMake Rules */,
+				72C3EB1B3E5240999D258F8F /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		7ED54135D83246EC8D48356A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3649BDA87EAE493FA3537F17 /* TutorialApp */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		906B3AC2040B4722BC3C0E84 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		B841C57B0A474B2F83853BD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF31E98879CA445A8068C625 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				33CB4CAEC9DA44CE8ACC8C4F /* Application.cpp */,
+				6D9D2BBA0A7E43E3B93556E7 /* VertexLayout.cpp */,
+				00DC724D38804FE188E358CE /* main.cpp */,
+				D995947E2875D69100383386 /* VertexBuffer.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2EA2CFDA5EB641A7A361D5FF /* TutorialApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19767D89DF0F49D29BF90032 /* Build configuration list for PBXNativeTarget "TutorialApp" */;
+			buildPhases = (
+				26BB062EE85E484CB4974249 /* Sources */,
+				B34A411053024191BC28AF23 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7CE536A9B8F4DDC839D0180 /* PBXTargetDependency */,
+			);
+			name = TutorialApp;
+			productName = TutorialApp;
+			productReference = 3649BDA87EAE493FA3537F17 /* TutorialApp */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E2A885E394142FBA8051079 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1340;
+			};
+			buildConfigurationList = 7D28B912FC694FBCA84E0104 /* Build configuration list for PBXProject "TutorialApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1757D8457AFF4080A74274F6;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				32D2E09FCECF45D6B07D8537 /* ALL_BUILD */,
+				2EA2CFDA5EB641A7A361D5FF /* TutorialApp */,
+				7DFF38BBA4F44718917F1C96 /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27F8F063B36FE42AA8BD5699 /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+				/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/CMakeFiles/ZERO_CHECK,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build\n  make -f /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build\n  make -f /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build\n  make -f /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build\n  make -f /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/CMakeScripts/ReRunCMake.make\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		794B063A61FA0637CCE5081B /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+				/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/CMakeFiles/ALL_BUILD,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build\n  echo Build\\ all\\ projects\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		26BB062EE85E484CB4974249 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A352200378F42C085FC5346 /* Application.cpp in Sources */,
+				D99594802875D69100383386 /* VertexBuffer.cpp in Sources */,
+				7F43E01D2EE94DA6A307C7DD /* VertexLayout.cpp in Sources */,
+				090CEFF0F849450997675AC0 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		36C76C76AEAB4633A0982663 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7DFF38BBA4F44718917F1C96 /* ZERO_CHECK */;
+			targetProxy = AF8BFF5B74354761ACB55D73 /* PBXContainerItemProxy */;
+		};
+		A7CE536A9B8F4DDC839D0180 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7DFF38BBA4F44718917F1C96 /* ZERO_CHECK */;
+			targetProxy = B104869D953D49F4B97B1697 /* PBXContainerItemProxy */;
+		};
+		F5EBA9E98E3B4803AEA79970 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EA2CFDA5EB641A7A361D5FF /* TutorialApp */;
+			targetProxy = 807711361AE040A9AB8AB8DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		15EA24F5895E40B882B10CAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		1B3530CE9CF341EA83056706 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3.7/include,
+					/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/include,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3.7/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/Cellar/glfw/3.3.7/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/usr/local/Cellar/glfw/3.3.7/lib,
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lglfw",
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = TutorialApp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		21C4F64C3ACE4CE5B7AA44AA /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk;
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/build;
+			};
+			name = MinSizeRel;
+		};
+		2F431D21AD6540FEB435CE49 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		360EA28A635646F798BC43AF /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk;
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/build;
+			};
+			name = RelWithDebInfo;
+		};
+		3F04C03A8B5940D588447957 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3.7/include,
+					/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/include,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3.7/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/Cellar/glfw/3.3.7/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/usr/local/Cellar/glfw/3.3.7/lib,
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lglfw",
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = TutorialApp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		4F260F1F4D0240BA8287B929 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		4FE5C79B2BAE4C6E96422C82 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = MinSizeRel;
+		};
+		52CA526B704D416F9977C98C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk;
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/build;
+			};
+			name = Debug;
+		};
+		70394DA646934425A4F88421 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		7B5FA034C86246A3B2FBC0D5 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = RelWithDebInfo;
+		};
+		935D134C8CF146EBAB897F02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		9AAB9792A2B6455F9710064B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " $(inherited)";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		9FD7C3990A7F49AB958D9A97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3.7/include,
+					/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/include,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3.7/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/Cellar/glfw/3.3.7/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/usr/local/Cellar/glfw/3.3.7/lib,
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = "   ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lglfw",
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = TutorialApp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Debug;
+		};
+		AD64C33D544A4C628BF72345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3.7/include,
+					/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/include,
+					"$(inherited)",
+				);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.3.7/lib,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/Cellar/glfw/3.3.7/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/usr/local/Cellar/glfw/3.3.7/lib,
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"-lglfw",
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					"-framework",
+					OpenGL,
+					"$(inherited)",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = TutorialApp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = "$(inherited)";
+			};
+			name = Release;
+		};
+		F3FBB395209A48D2B21EB40D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk;
+				SYMROOT = /Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/TutorialApp/build/build;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19767D89DF0F49D29BF90032 /* Build configuration list for PBXNativeTarget "TutorialApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FD7C3990A7F49AB958D9A97 /* Debug */,
+				AD64C33D544A4C628BF72345 /* Release */,
+				1B3530CE9CF341EA83056706 /* MinSizeRel */,
+				3F04C03A8B5940D588447957 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7D28B912FC694FBCA84E0104 /* Build configuration list for PBXProject "TutorialApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52CA526B704D416F9977C98C /* Debug */,
+				F3FBB395209A48D2B21EB40D /* Release */,
+				21C4F64C3ACE4CE5B7AA44AA /* MinSizeRel */,
+				360EA28A635646F798BC43AF /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		ACAFD657C4A44285BE8B11C1 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15EA24F5895E40B882B10CAF /* Debug */,
+				935D134C8CF146EBAB897F02 /* Release */,
+				2F431D21AD6540FEB435CE49 /* MinSizeRel */,
+				4F260F1F4D0240BA8287B929 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D3F50F0330764236922A162E /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AAB9792A2B6455F9710064B /* Debug */,
+				70394DA646934425A4F88421 /* Release */,
+				4FE5C79B2BAE4C6E96422C82 /* MinSizeRel */,
+				7B5FA034C86246A3B2FBC0D5 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E2A885E394142FBA8051079 /* Project object */;
+}

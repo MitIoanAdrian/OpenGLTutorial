@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <GLFW/glfw3.h>
+#include <OGL.h>
 #include <iostream>
 
 // file: Application.h
@@ -22,8 +22,8 @@ public:
 
   void update(const float delta_seconds);
   //^ called from run() function. delta seconds is the ammount of time (in
-  //seconds) that passed since the last update() call. First call has 0 as
-  //argument.
+  // seconds) that passed since the last update() call. First call has 0 as
+  // argument.
 
   void render();
   //^ called from run() function.
