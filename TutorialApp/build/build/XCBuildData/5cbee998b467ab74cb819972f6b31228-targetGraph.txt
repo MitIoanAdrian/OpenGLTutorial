@@ -1,4 +1,0 @@
-Target dependency graph (2 targets)
-ZERO_CHECK in TutorialApp, no dependencies
-TutorialApp in TutorialApp, depends on:
-ZERO_CHECK in TutorialApp (explicit)
