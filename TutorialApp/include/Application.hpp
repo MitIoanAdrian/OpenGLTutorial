@@ -34,7 +34,7 @@ public:
 
 private:
   // add members here:
-  GLFWwindow *m_Window; // m_ -> memeber
+  GLFWwindow *m_Window = nullptr; // m_ -> memeber
 
   static void key_callback(GLFWwindow *, int, int, int, int);
 };
