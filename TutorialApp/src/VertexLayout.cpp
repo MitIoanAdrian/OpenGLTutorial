@@ -11,14 +11,13 @@ void VertexLayout::AddVertexAttribute(const char *name,
   vAttr.name = name;
   vAttr.number_of_floats = number_of_floats;
 
-  m_Size += number_of_floats;
+  m_Size += sizeof(number_of_floats);
 
   m_VertexAttrib.push_back(vAttr);
 }
 
 std::size_t VertexLayout::getSize() const { return m_Size; }
 
-std::vector<VertexAttribute> VertexLayout::getAll() const & {
-
+const std::vector<VertexAttribute> &VertexLayout::getAll() const {
   return m_VertexAttrib;
 }

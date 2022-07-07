@@ -5,10 +5,9 @@
 //  Created by Adrian Mit - (p) on 06.07.2022.
 //
 
-#include <VertexBuffer.h>
 #include <OGL.h>
+#include <VertexBuffer.h>
 #include <VertexLayout.h>
-
 
 VertexBuffer::VertexBuffer() {
 
@@ -21,8 +20,7 @@ void VertexBuffer::bind() {
 
   glBindVertexArray(m_VAO);
 
- // glBindBuffer(GL_ARRAY_BUFFER, m_Buff);
-    
+  // glBindBuffer(GL_ARRAY_BUFFER, m_Buff);
 }
 
 void VertexBuffer::create(const void *data, const VertexLayout &vertex_layout,
@@ -55,7 +53,7 @@ void VertexBuffer::create(const void *data, const VertexLayout &vertex_layout,
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-  for (int i = 0; i <= index; i++)
+  for (int i = 0; i < index; i++)
     glDisableVertexAttribArray(i);
 }
 
@@ -65,4 +63,3 @@ VertexBuffer::~VertexBuffer() {
 
   glDeleteBuffers(1, &m_Buff);
 }
-

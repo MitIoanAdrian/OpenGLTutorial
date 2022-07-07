@@ -23,7 +23,7 @@ public:
 
   void AddVertexAttribute(const char *name, const std::size_t number_of_floats);
 
-  std::vector<VertexAttribute> getAll() const &;
+  const std::vector<VertexAttribute> &getAll() const;
 
 private:
   std::vector<VertexAttribute> m_VertexAttrib;

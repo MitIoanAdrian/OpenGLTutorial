@@ -16,6 +16,7 @@ add_executable(
 	include/VertexLayout.h
 	include/OGL.h
 	include/VertexBuffer.h
+	include/ogldev_math_3d.h
 )
 
 
