@@ -41,8 +41,7 @@ void VertexBuffer::create(const void *data, const VertexLayout &vertex_layout,
 
     glEnableVertexAttribArray(index);
 
-    glVertexAttribPointer(index, v.number_of_floats, GL_FLOAT, GL_FALSE, 0,
-                          (void *)offset);
+    glVertexAttribPointer(index, v.number_of_floats, GL_FLOAT, GL_FALSE, vertex_layout.getSize(), (void *)offset);
 
     offset += v.number_of_floats * sizeof(float);
 
