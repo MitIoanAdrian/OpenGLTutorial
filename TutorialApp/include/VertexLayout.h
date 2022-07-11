@@ -12,7 +12,7 @@ struct VertexAttribute {
 
   std::size_t number_of_floats;
 
-  //std::size_t offset;
+  // std::size_t offset;
 };
 
 class VertexLayout {

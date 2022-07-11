@@ -10,10 +10,9 @@ void VertexLayout::AddVertexAttribute(const char *name,
 
   vAttr.name = name;
   vAttr.number_of_floats = number_of_floats;
-    
-    
-    m_Size += number_of_floats * sizeof(float);
-    
+
+  m_Size += number_of_floats * sizeof(float);
+
   m_VertexAttrib.push_back(vAttr);
 }
 

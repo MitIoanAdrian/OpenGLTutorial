@@ -8,9 +8,9 @@
 #pragma once
 
 #include <OGL.h>
-#include <iostream>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
+#include <iostream>
 #include <memory>
 
 // file: Application.h
@@ -30,8 +30,7 @@ public:
 
   void render();
   //^ called from run() function.
-    
-  
+
 public:
   void run();
   //^ this functions keeps the application alive until user presses escape
@@ -39,12 +38,10 @@ public:
 private:
   // add members here:
   GLFWwindow *m_Window = nullptr; // m_ -> memeber
-    
-    std::shared_ptr<VertexBuffer> v_Buff;
-    
-    std::shared_ptr<VertexLayout> v_Lay;
-    
+
+  std::shared_ptr<VertexBuffer> v_Buff;
+
+  std::shared_ptr<VertexLayout> v_Lay;
 
   static void key_callback(GLFWwindow *, int, int, int, int);
 };
-
