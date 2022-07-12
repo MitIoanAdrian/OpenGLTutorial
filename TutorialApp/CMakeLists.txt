@@ -12,13 +12,15 @@ add_executable(
 	src/Application.cpp
 	src/VertexLayout.cpp
 	src/VertexBuffer.cpp
-	src/shader.cpp
+	src/ShadersProgram.cpp
+	src/AttributeHelper.cpp
 	include/Application.hpp
 	include/VertexLayout.h
 	include/OGL.h
 	include/VertexBuffer.h
 	include/ogldev_math_3d.h
-	include/shader.h
+	include/ShadersProgram.h
+	include/AttributeHelper.h
 	shaders/shader.vs
 	shaders/shader.fs
 )

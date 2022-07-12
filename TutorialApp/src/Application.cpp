@@ -7,14 +7,15 @@
 
 #include "Application.hpp"
 #include <OGL.h>
+#include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
 #include <iostream>
 #include <memory>
-#include <shader.h>
 
 bool Application::initialize(const char *window_name, std::size_t width,
                              std::size_t height) {
+
   if (!glfwInit())
     return -1;
 
@@ -38,30 +39,29 @@ bool Application::initialize(const char *window_name, std::size_t width,
 
   v_Lay = std::make_shared<VertexLayout>();
   v_Buff = std::make_shared<VertexBuffer>();
+  s_Prog = std::make_shared<ShadersProgram>();
 
-  v_Lay->AddVertexAttribute("Position", 2);
-  v_Lay->AddVertexAttribute("Colour", 3);
+  v_Lay->AddVertexAttribute(AttributeHelper::kPosition, 2);
+  v_Lay->AddVertexAttribute(AttributeHelper::kColor, 3);
 
-  float data[] = {-1.0f, -1.0f, 1.0f, 0.0f,  0.0f, 0.0f, 1.0f, 1.0f,
-                  0.0f,  0.0f,  1.0f, -1.0f, 1.0f, 0.0f, 0.0f};
+  float data[] = {-1.0f, -1.0f, 1.0f, 0.0f,  0.0f, 0.0f, 1.0f, 0.0f,
+                  1.0f,  0.0f,  1.0f, -1.0f, 0.0f, 0.0f, 1.0f};
 
   v_Buff->create(data, *v_Lay, sizeof(data) / v_Lay->getSize());
   v_Buff->bind();
-  CompileShaders();
+  s_Prog->create();
 
   return true;
 }
 
 void Application::run() {
   float delta_time = glfwGetTime();
-
+  int key;
   while (!glfwWindowShouldClose(m_Window)) {
     float current_time = glfwGetTime();
-
     this->update(current_time - delta_time);
     this->render();
     delta_time = current_time;
-
     glfwSwapBuffers(m_Window);
     glfwPollEvents();
   }

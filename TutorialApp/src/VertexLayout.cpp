@@ -1,14 +1,14 @@
+#include <AttributeHelper.h>
 #include <OGL.h>
 #include <VertexLayout.h>
-
 #include <iostream>
 
-void VertexLayout::AddVertexAttribute(const char *name,
+void VertexLayout::AddVertexAttribute(const AttributeHelper::AttributeType t,
                                       const std::size_t number_of_floats) {
 
   VertexAttribute vAttr;
 
-  vAttr.name = name;
+  vAttr.type = AttributeHelper::getAttributeName(t);
   vAttr.number_of_floats = number_of_floats;
 
   m_Size += number_of_floats * sizeof(float);

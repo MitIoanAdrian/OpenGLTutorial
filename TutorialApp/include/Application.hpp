@@ -8,6 +8,7 @@
 #pragma once
 
 #include <OGL.h>
+#include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
 #include <iostream>
@@ -35,6 +36,8 @@ public:
   void run();
   //^ this functions keeps the application alive until user presses escape
 
+  static char set_uniform(char);
+
 private:
   // add members here:
   GLFWwindow *m_Window = nullptr; // m_ -> memeber
@@ -43,5 +46,8 @@ private:
 
   std::shared_ptr<VertexLayout> v_Lay;
 
+  std::shared_ptr<ShadersProgram> s_Prog;
+
   static void key_callback(GLFWwindow *, int, int, int, int);
+  static void key_callback2(GLFWwindow *, int, int, int, int);
 };

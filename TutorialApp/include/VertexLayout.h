@@ -2,13 +2,14 @@
 
 #pragma once
 
+#include <AttributeHelper.h>
 #include <OGL.h>
 #include <iostream>
 #include <vector>
 
 struct VertexAttribute {
 
-  const char *name;
+  const char *type;
 
   std::size_t number_of_floats;
 
@@ -21,7 +22,8 @@ public:
   std::size_t getSize() const;
   //^ returns the size in bytes of a single vertex
 
-  void AddVertexAttribute(const char *name, const std::size_t number_of_floats);
+  void AddVertexAttribute(const AttributeHelper::AttributeType t,
+                          const std::size_t number_of_floats);
 
   const std::vector<VertexAttribute> &getAll() const;
 
