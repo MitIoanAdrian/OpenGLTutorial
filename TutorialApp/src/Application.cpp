@@ -12,6 +12,25 @@
 #include <VertexLayout.h>
 #include <iostream>
 #include <memory>
+#include <ogldev_math_3d.h>
+
+Vector2f uOffset(0.0f, 0.0f);
+
+void Application::first_innit() {
+  v_Lay = std::make_shared<VertexLayout>();
+  v_Buff = std::make_shared<VertexBuffer>();
+  s_Prog = std::make_shared<ShadersProgram>();
+
+  v_Lay->AddVertexAttribute(AttributeHelper::kPosition, 2);
+  v_Lay->AddVertexAttribute(AttributeHelper::kColor, 3);
+
+  float data[] = {-1.0f, -1.0f, 1.0f, 0.0f,  0.0f, 0.0f, 1.0f, 0.0f,
+                  1.0f,  0.0f,  1.0f, -1.0f, 0.0f, 0.0f, 1.0f};
+
+  v_Buff->create(data, *v_Lay, sizeof(data) / v_Lay->getSize());
+  v_Buff->bind();
+  s_Prog->create();
+}
 
 bool Application::initialize(const char *window_name, std::size_t width,
                              std::size_t height) {
@@ -35,22 +54,6 @@ bool Application::initialize(const char *window_name, std::size_t width,
   glfwSetKeyCallback(m_Window, Application::key_callback);
   glfwSetWindowUserPointer(m_Window, this);
 
-  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
-  v_Lay = std::make_shared<VertexLayout>();
-  v_Buff = std::make_shared<VertexBuffer>();
-  s_Prog = std::make_shared<ShadersProgram>();
-
-  v_Lay->AddVertexAttribute(AttributeHelper::kPosition, 2);
-  v_Lay->AddVertexAttribute(AttributeHelper::kColor, 3);
-
-  float data[] = {-1.0f, -1.0f, 1.0f, 0.0f,  0.0f, 0.0f, 1.0f, 0.0f,
-                  1.0f,  0.0f,  1.0f, -1.0f, 0.0f, 0.0f, 1.0f};
-
-  v_Buff->create(data, *v_Lay, sizeof(data) / v_Lay->getSize());
-  v_Buff->bind();
-  s_Prog->create();
-
   return true;
 }
 
@@ -71,7 +74,12 @@ void Application::update(const float delta_seconds) {}
 
 void Application::render() {
 
+  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+  if (!innit)
+    first_innit();
   glClear(GL_COLOR_BUFFER_BIT);
+  s_Prog->bind();
+  s_Prog->setUniform(uOffset);
 
   v_Buff->bind();
 
@@ -82,6 +90,19 @@ void Application::key_callback(GLFWwindow *window, int key, int scancode,
                                int action, int mods) {
   Application *handler =
       reinterpret_cast<Application *>(glfwGetWindowUserPointer(window));
+
+  if (key == GLFW_KEY_UP) {
+    uOffset.y += 0.05f;
+  }
+  if (key == GLFW_KEY_DOWN) {
+    uOffset.y -= 0.05f;
+  }
+  if (key == GLFW_KEY_LEFT) {
+    uOffset.x -= 0.05f;
+  }
+  if (key == GLFW_KEY_RIGHT) {
+    uOffset.x += 0.05f;
+  }
   if (key == GLFW_KEY_ESCAPE)
     glfwSetWindowShouldClose(handler->m_Window, GLFW_TRUE);
 }

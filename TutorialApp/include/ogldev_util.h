@@ -18,8 +18,8 @@
 #ifndef _WIN64
 #include <unistd.h>
 #endif
-#include "ogldev_types.h"
-#include <GL/glew.h>
+//#include "ogldev_types.h"
+//#include <GL/glew.h>
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>

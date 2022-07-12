@@ -21,6 +21,8 @@ public:
   Application &operator=(const Application &) = delete;
 
 public:
+  void first_innit();
+
   bool initialize(const char *window_name, std::size_t width,
                   std::size_t height);
 
@@ -47,6 +49,8 @@ private:
   std::shared_ptr<VertexLayout> v_Lay;
 
   std::shared_ptr<ShadersProgram> s_Prog;
+
+  bool innit = 0;
 
   static void key_callback(GLFWwindow *, int, int, int, int);
   static void key_callback2(GLFWwindow *, int, int, int, int);

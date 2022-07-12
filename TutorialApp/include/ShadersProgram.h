@@ -2,6 +2,7 @@
 
 #include <OGL.h>
 #include <iostream>
+#include <ogldev_math_3d.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -23,6 +24,8 @@ public:
 
   const char *getAttributeName(const std::size_t attribute_index) const;
 
+  void setUniform(Vector2f);
+
   std::size_t getUniformCount() const;
 
   const char *getUniformName(const std::size_t uniform_index) const;
@@ -35,4 +38,5 @@ private:
   const char *m_Fragment_Shader = "/Users/adrianm2/Desktop/OpenGLWindow/"
                                   "OpenGLWindow/TutorialApp/shaders/shader.fs";
   GLuint m_Shader_Program;
+  GLint m_uOffsetLocation;
 };

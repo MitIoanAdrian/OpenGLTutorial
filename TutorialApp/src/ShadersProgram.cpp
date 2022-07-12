@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <istream>
+#include <ogldev_math_3d.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -77,6 +78,15 @@ void ShadersProgram::link() {
     fprintf(stderr, "Error linking shader program: '%s'\n", ErrorLog);
     exit(1);
   }
+
+  m_uOffsetLocation = glGetUniformLocation(m_Shader_Program, "uOffset");
+  if (m_uOffsetLocation == -1) {
+    printf("Error getting uniform location of 'uOffset'\n");
+  }
+}
+
+void ShadersProgram::setUniform(Vector2f uOffset) {
+  glUniform2f(m_uOffsetLocation, uOffset.x, uOffset.y);
 }
 
 void ShadersProgram::create() {
