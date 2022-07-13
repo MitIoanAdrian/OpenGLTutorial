@@ -7,12 +7,11 @@
 
 #pragma once
 
-#include <OGL.h>
+
 #include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
-#include <iostream>
-#include <memory>
+
 
 // file: Application.h
 class Application {

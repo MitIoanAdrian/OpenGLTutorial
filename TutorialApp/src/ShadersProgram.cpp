@@ -1,15 +1,18 @@
 #include <OGL.h>
 #include <ShadersProgram.h>
 #include <fstream>
-#include <iostream>
-#include <istream>
-#include <ogldev_math_3d.h>
-#include <stdio.h>
-#include <string.h>
 
 ShadersProgram::ShadersProgram(){};
 
 ShadersProgram::~ShadersProgram(){};
+
+void ShadersProgram::setVertexShader(const char *vs){
+    m_Vertex_Shader = vs;
+}
+
+void ShadersProgram::setFragmentShader(const char *fs){
+    m_Fragment_Shader = fs;
+}
 
 std::string ShadersProgram::readFile(const char *file) {
   std::string toread;

@@ -3,8 +3,6 @@
 #include <OGL.h>
 #include <iostream>
 #include <ogldev_math_3d.h>
-#include <stdio.h>
-#include <string.h>
 
 class ShadersProgram {
 public:
@@ -12,11 +10,12 @@ public:
   ~ShadersProgram();
 
 public:
+   
+    void setVertexShader(const char* vs);
+    
+    void setFragmentShader(const char* fs);
+        
   std::string readFile(const char *file);
-
-  void addShader(const char *pShaderText, GLenum ShaderType);
-
-  void link();
 
   void create();
 
@@ -33,10 +32,11 @@ public:
   void bind(); // or glUseProgram
 
 private:
-  const char *m_Vertex_Shader = "/Users/adrianm2/Desktop/OpenGLWindow/"
-                                "OpenGLWindow/TutorialApp/shaders/shader.vs";
-  const char *m_Fragment_Shader = "/Users/adrianm2/Desktop/OpenGLWindow/"
-                                  "OpenGLWindow/TutorialApp/shaders/shader.fs";
+    void addShader(const char *pShaderText, GLenum ShaderType);
+    void link();
+    
+    const char *m_Vertex_Shader = nullptr;
+    const char *m_Fragment_Shader = nullptr;
   GLuint m_Shader_Program;
   GLint m_uOffsetLocation;
 };

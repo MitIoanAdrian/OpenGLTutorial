@@ -1,5 +1,4 @@
 #include <AttributeHelper.h>
-#include <OGL.h>
 #include <VertexLayout.h>
 #include <iostream>
 

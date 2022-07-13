@@ -6,13 +6,11 @@
 //
 
 #include "Application.hpp"
-#include <OGL.h>
 #include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
-#include <iostream>
-#include <memory>
-#include <ogldev_math_3d.h>
+
+
 
 // Vector2f uOffset(0.0f, 0.0f);
 Matrix4f MVP;
@@ -100,6 +98,10 @@ void Application::first_innit() {
 
   v_Buff->create(data, *v_Lay, sizeof(data) / v_Lay->getSize());
   v_Buff->bind();
+  s_Prog->setVertexShader("/Users/adrianm2/Desktop/OpenGLWindow/"
+                          "OpenGLWindow/TutorialApp/shaders/shader.vs");
+  s_Prog->setFragmentShader("/Users/adrianm2/Desktop/OpenGLWindow/"
+                            "OpenGLWindow/TutorialApp/shaders/shader.fs");
   s_Prog->create();
 }
 

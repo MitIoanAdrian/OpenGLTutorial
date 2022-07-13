@@ -3,7 +3,6 @@
 #pragma once
 
 #include <AttributeHelper.h>
-#include <OGL.h>
 #include <iostream>
 #include <vector>
 

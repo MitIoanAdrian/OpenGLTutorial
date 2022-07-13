@@ -1,5 +1,4 @@
 #include <AttributeHelper.h>
-#include <OGL.h>
 #include <iostream>
 
 const char *AttributeHelper::getAttributeName(const AttributeType t) {
