@@ -79,14 +79,14 @@ void ShadersProgram::link() {
     exit(1);
   }
 
-  m_uOffsetLocation = glGetUniformLocation(m_Shader_Program, "uOffset");
+  m_uOffsetLocation = glGetUniformLocation(m_Shader_Program, "gWorld");
   if (m_uOffsetLocation == -1) {
     printf("Error getting uniform location of 'uOffset'\n");
   }
 }
 
-void ShadersProgram::setUniform(Vector2f uOffset) {
-  glUniform2f(m_uOffsetLocation, uOffset.x, uOffset.y);
+void ShadersProgram::setUniform(Matrix4f FinalMatrix) {
+    glUniformMatrix4fv(m_uOffsetLocation, 1, GL_TRUE, &FinalMatrix.m[0][0]);
 }
 
 void ShadersProgram::create() {

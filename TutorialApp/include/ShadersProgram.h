@@ -24,7 +24,7 @@ public:
 
   const char *getAttributeName(const std::size_t attribute_index) const;
 
-  void setUniform(Vector2f);
+  void setUniform(Matrix4f);
 
   std::size_t getUniformCount() const;
 
