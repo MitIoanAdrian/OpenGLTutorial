@@ -10,13 +10,9 @@ public:
   ~ShadersProgram();
 
 public:
-  void setVertexShader(const char *vs);
-
-  void setFragmentShader(const char *fs);
-
   std::string readFile(const char *file);
 
-  void create();
+  void create(const char *vs, const char *fs);
 
   std::size_t getAttributeCount() const;
 

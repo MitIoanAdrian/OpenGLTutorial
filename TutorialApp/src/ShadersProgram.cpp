@@ -6,12 +6,6 @@ ShadersProgram::ShadersProgram(){};
 
 ShadersProgram::~ShadersProgram(){};
 
-void ShadersProgram::setVertexShader(const char *vs) { m_Vertex_Shader = vs; }
-
-void ShadersProgram::setFragmentShader(const char *fs) {
-  m_Fragment_Shader = fs;
-}
-
 std::string ShadersProgram::readFile(const char *file) {
   std::string toread;
   std::ifstream in;
@@ -90,7 +84,9 @@ void ShadersProgram::setUniform(Matrix4f FinalMatrix) {
   glUniformMatrix4fv(m_uOffsetLocation, 1, GL_TRUE, &FinalMatrix.m[0][0]);
 }
 
-void ShadersProgram::create() {
+void ShadersProgram::create(const char *vs, const char *fs) {
+  m_Vertex_Shader = vs;
+  m_Fragment_Shader = fs;
   m_Shader_Program = glCreateProgram();
 
   if (m_Shader_Program == 0) {
