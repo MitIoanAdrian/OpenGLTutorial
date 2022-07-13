@@ -11,7 +11,10 @@ const char *AttributeHelper::getAttributeName(const AttributeType t) {
     return "Position";
     break;
   case AttributeHelper::AttributeType::kAttributeCount:
-    return "AttributeCount";
+    return "AttributeCount";                              //also used for "invalid" attribute
+    break;
+  default:
+    return nullptr;
     break;
   }
 }
