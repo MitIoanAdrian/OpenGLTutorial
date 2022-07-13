@@ -86,7 +86,7 @@ void ShadersProgram::link() {
 }
 
 void ShadersProgram::setUniform(Matrix4f FinalMatrix) {
-    glUniformMatrix4fv(m_uOffsetLocation, 1, GL_TRUE, &FinalMatrix.m[0][0]);
+  glUniformMatrix4fv(m_uOffsetLocation, 1, GL_TRUE, &FinalMatrix.m[0][0]);
 }
 
 void ShadersProgram::create() {
