@@ -10,11 +10,10 @@ public:
   ~ShadersProgram();
 
 public:
-   
-    void setVertexShader(const char* vs);
-    
-    void setFragmentShader(const char* fs);
-        
+  void setVertexShader(const char *vs);
+
+  void setFragmentShader(const char *fs);
+
   std::string readFile(const char *file);
 
   void create();
@@ -32,11 +31,11 @@ public:
   void bind(); // or glUseProgram
 
 private:
-    void addShader(const char *pShaderText, GLenum ShaderType);
-    void link();
-    
-    const char *m_Vertex_Shader = nullptr;
-    const char *m_Fragment_Shader = nullptr;
+  void addShader(const char *pShaderText, GLenum ShaderType);
+  void link();
+
+  const char *m_Vertex_Shader = nullptr;
+  const char *m_Fragment_Shader = nullptr;
   GLuint m_Shader_Program;
   GLint m_uOffsetLocation;
 };

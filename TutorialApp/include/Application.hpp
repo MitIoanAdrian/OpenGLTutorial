@@ -7,11 +7,9 @@
 
 #pragma once
 
-
 #include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
-
 
 // file: Application.h
 class Application {

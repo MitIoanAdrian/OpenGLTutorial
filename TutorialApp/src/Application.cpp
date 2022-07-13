@@ -10,8 +10,6 @@
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
 
-
-
 // Vector2f uOffset(0.0f, 0.0f);
 Matrix4f MVP;
 

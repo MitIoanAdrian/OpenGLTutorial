@@ -6,12 +6,10 @@ ShadersProgram::ShadersProgram(){};
 
 ShadersProgram::~ShadersProgram(){};
 
-void ShadersProgram::setVertexShader(const char *vs){
-    m_Vertex_Shader = vs;
-}
+void ShadersProgram::setVertexShader(const char *vs) { m_Vertex_Shader = vs; }
 
-void ShadersProgram::setFragmentShader(const char *fs){
-    m_Fragment_Shader = fs;
+void ShadersProgram::setFragmentShader(const char *fs) {
+  m_Fragment_Shader = fs;
 }
 
 std::string ShadersProgram::readFile(const char *file) {
