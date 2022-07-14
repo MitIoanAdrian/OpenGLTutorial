@@ -14,13 +14,22 @@ add_executable(
 	src/VertexBuffer.cpp
 	src/ShadersProgram.cpp
 	src/AttributeHelper.cpp
+	src/ModelTrans.cpp
+	src/Camera.cpp
+	src/math_3d.cpp
+	src/ogldev_util.cpp
+	src/UniformHelper.cpp
 	include/Application.hpp
 	include/VertexLayout.h
 	include/OGL.h
 	include/VertexBuffer.h
 	include/ogldev_math_3d.h
+	include/ogldev_types.h
 	include/ShadersProgram.h
 	include/AttributeHelper.h
+	include/ModelTrans.h
+	include/Camera.h
+	include/UniformHelper.h
 	shaders/shader.vs
 	shaders/shader.fs
 )

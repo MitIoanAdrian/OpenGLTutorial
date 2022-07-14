@@ -150,7 +150,7 @@ void Application::render() {
     first_innit();
   glClear(GL_COLOR_BUFFER_BIT);
   s_Prog->bind();
-  s_Prog->setUniform(MVP);
+    s_Prog->setUniformMat4(UniformHelper::UniformType::kMVP, MVP);
 
   v_Buff->bind();
 

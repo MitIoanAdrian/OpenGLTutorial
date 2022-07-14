@@ -18,7 +18,7 @@
 #ifndef _WIN64
 #include <unistd.h>
 #endif
-//#include "ogldev_types.h"
+#include "ogldev_types.h"
 //#include <GL/glew.h>
 #include <assert.h>
 #include <stdio.h>
@@ -104,8 +104,8 @@ void gl_check_error(const char *function, const char *file, int line);
 #define GCE
 #endif
 
-void glDebugOutput(GLenum source, GLenum type, unsigned int id, GLenum severity,
-                   GLsizei length, const char *message, const void *userParam);
+//void glDebugOutput(GLenum source, GLenum type, unsigned int id, GLenum severity,
+//                 GLsizei length, const char *message, const void *userParam);
 
 string GetDirFromFilename(const string &Filename);
 

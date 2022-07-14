@@ -1,15 +1,28 @@
 #pragma once
 
+#include <ogldev_math_3d.h>
+
 class Camera {
 public:
-  void LookAt(target, from_position);
+    Camera();
+    
+    void LookAt(float x, float y, float z);
 
-  void Move(vec3 distance);
+  void Move(unsigned char Key);
 
-  mat4 getViewMatrix();
+  Matrix4f getViewMatrix();
 
 public:
-  void setProjection(near, far, fov, view_size);
+  void setProjection(float near, float far, float fov, float view_size);
 
-  mat4 getProjectionMatrix();
-}
+  Matrix4f getProjectionMatrix();
+
+private:
+    Matrix4f m_Projection;
+    
+    Vector3f m_pos;
+	Vector3f m_target;
+	Vector3f m_up;
+	float m_speed = 1;
+};
+

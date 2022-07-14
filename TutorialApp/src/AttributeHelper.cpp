@@ -13,9 +13,10 @@ const char *AttributeHelper::getAttributeName(const AttributeType t) {
     return "AttributeCount"; // also used for "invalid" attribute
     break;
   default:
-    return nullptr;
     break;
+          return nullptr;
   }
+
 }
 
 AttributeHelper::AttributeType
