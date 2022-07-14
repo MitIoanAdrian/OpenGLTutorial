@@ -14,9 +14,8 @@ const char *AttributeHelper::getAttributeName(const AttributeType t) {
     break;
   default:
     break;
-          return nullptr;
+    return nullptr;
   }
-
 }
 
 AttributeHelper::AttributeType

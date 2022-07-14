@@ -7,11 +7,11 @@
 
 #pragma once
 
+#include <Camera.h>
+#include <ModelTrans.h>
 #include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
-#include <ModelTrans.h>
-#include <Camera.h>
 
 // file: Application.h
 class Application {
@@ -48,9 +48,9 @@ private:
   std::shared_ptr<VertexLayout> v_Lay;
 
   std::shared_ptr<ShadersProgram> s_Prog;
-    
+
   ModelTrans M;
-    
+
   Camera VP;
 
   bool innit = 0;

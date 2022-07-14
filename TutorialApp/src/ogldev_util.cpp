@@ -12,8 +12,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #ifdef _WIN32
 #include <Windows.h>
 #else
@@ -22,144 +22,136 @@
 
 //#include <GL/glew.h>
 //#include <GL/freeglut.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <stdarg.h>
-#include <ogldev_types.h>
 #include "ogldev_util.h"
+#include <errno.h>
+#include <fcntl.h>
+#include <ogldev_types.h>
+#include <stdarg.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
-bool ReadFile(const char* pFileName, string& outFile)
-{
-    ifstream f(pFileName);
+bool ReadFile(const char *pFileName, string &outFile) {
+  ifstream f(pFileName);
 
-    bool ret = false;
+  bool ret = false;
 
-    if (f.is_open()) {
-        string line;
-        while (getline(f, line)) {
-            outFile.append(line);
-            outFile.append("\n");
-        }
-
-        f.close();
-
-        ret = true;
-    }
-    else {
-        OGLDEV_FILE_ERROR(pFileName);
+  if (f.is_open()) {
+    string line;
+    while (getline(f, line)) {
+      outFile.append(line);
+      outFile.append("\n");
     }
 
-    return ret;
+    f.close();
+
+    ret = true;
+  } else {
+    OGLDEV_FILE_ERROR(pFileName);
+  }
+
+  return ret;
 }
-
 
 #ifdef _WIN32
 
-char* ReadBinaryFile(const char* pFileName, int& size)
-{
-    HANDLE f = CreateFileA(pFileName, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+char *ReadBinaryFile(const char *pFileName, int &size) {
+  HANDLE f = CreateFileA(pFileName, GENERIC_READ, 0, NULL, OPEN_EXISTING,
+                         FILE_ATTRIBUTE_NORMAL, NULL);
 
-    if (f == INVALID_HANDLE_VALUE) {
-        OGLDEV_FILE_ERROR(pFileName);
-        return NULL;
-    }
+  if (f == INVALID_HANDLE_VALUE) {
+    OGLDEV_FILE_ERROR(pFileName);
+    return NULL;
+  }
 
-    size = GetFileSize(f, NULL);
+  size = GetFileSize(f, NULL);
 
-    if (size == INVALID_FILE_SIZE) {
-        OGLDEV_ERROR("Invalid file size %s\n", pFileName);
-        return NULL;
-    }
+  if (size == INVALID_FILE_SIZE) {
+    OGLDEV_ERROR("Invalid file size %s\n", pFileName);
+    return NULL;
+  }
 
-    char* p = (char*)malloc(size);
+  char *p = (char *)malloc(size);
 
-    DWORD bytes_read = 0;
-    bool b = ReadFile(f, p, size, &bytes_read, NULL);
+  DWORD bytes_read = 0;
+  bool b = ReadFile(f, p, size, &bytes_read, NULL);
 
-    return p;
+  return p;
 }
 
 #else
-char* ReadBinaryFile(const char* pFileName, int& size)
-{
-    int f = open(pFileName, O_RDONLY);
+char *ReadBinaryFile(const char *pFileName, int &size) {
+  int f = open(pFileName, O_RDONLY);
 
-    if (f == -1) {
-        OGLDEV_ERROR("Error opening '%s': %s\n", pFileName, strerror(errno));
-        return NULL;
-    }
+  if (f == -1) {
+    OGLDEV_ERROR("Error opening '%s': %s\n", pFileName, strerror(errno));
+    return NULL;
+  }
 
-    struct stat stat_buf;
-    int error = stat(pFileName, &stat_buf);
+  struct stat stat_buf;
+  int error = stat(pFileName, &stat_buf);
 
-    if (error) {
-        OGLDEV_ERROR("Error getting file stats: %s\n", strerror(errno));
-        return NULL;
-    }
+  if (error) {
+    OGLDEV_ERROR("Error getting file stats: %s\n", strerror(errno));
+    return NULL;
+  }
 
-    size = stat_buf.st_size;
+  size = stat_buf.st_size;
 
-    char* p = (char*)malloc(size);
-    assert(p);
+  char *p = (char *)malloc(size);
+  assert(p);
 
-    int read_len = read(f, p, size);
+  int read_len = read(f, p, size);
 
-    if (read_len != size) {
-        OGLDEV_ERROR("Error reading file: %s\n", strerror(errno));
-        return NULL;
-    }
+  if (read_len != size) {
+    OGLDEV_ERROR("Error reading file: %s\n", strerror(errno));
+    return NULL;
+  }
 
-    close(f);
+  close(f);
 
-    return p;
+  return p;
 }
 #endif
 
-void OgldevError(const char* pFileName, uint line, const char* format, ...)
-{
-    char msg[1000];
-    va_list args;
-    va_start(args, format);
-    VSNPRINTF(msg, sizeof(msg), format, args);
-    va_end(args);
+void OgldevError(const char *pFileName, uint line, const char *format, ...) {
+  char msg[1000];
+  va_list args;
+  va_start(args, format);
+  VSNPRINTF(msg, sizeof(msg), format, args);
+  va_end(args);
 
 #ifdef _WIN32
-    char msg2[1000];
-    _snprintf_s(msg2, sizeof(msg2), "%s:%d: %s", pFileName, line, msg);
-    MessageBoxA(NULL, msg2, NULL, 0);
+  char msg2[1000];
+  _snprintf_s(msg2, sizeof(msg2), "%s:%d: %s", pFileName, line, msg);
+  MessageBoxA(NULL, msg2, NULL, 0);
 #else
-    fprintf(stderr, "%s:%d - %s", pFileName, line, msg);
+  fprintf(stderr, "%s:%d - %s", pFileName, line, msg);
 #endif
 }
 
-
-void OgldevFileError(const char* pFileName, uint line, const char* pFileError)
-{
+void OgldevFileError(const char *pFileName, uint line, const char *pFileError) {
 #ifdef _WIN32
-    char msg[1000];
-    _snprintf_s(msg, sizeof(msg), "%s:%d: unable to open file `%s`", pFileName, line, pFileError);
-    MessageBoxA(NULL, msg, NULL, 0);
+  char msg[1000];
+  _snprintf_s(msg, sizeof(msg), "%s:%d: unable to open file `%s`", pFileName,
+              line, pFileError);
+  MessageBoxA(NULL, msg, NULL, 0);
 #else
-    fprintf(stderr, "%s:%d: unable to open file `%s`\n", pFileName, line, pFileError);
+  fprintf(stderr, "%s:%d: unable to open file `%s`\n", pFileName, line,
+          pFileError);
 #endif
 }
 
-
-long long GetCurrentTimeMillis()
-{
+long long GetCurrentTimeMillis() {
 #ifdef _WIN32
-    return GetTickCount();
+  return GetTickCount();
 #else
-    timeval t;
-    gettimeofday(&t, NULL);
+  timeval t;
+  gettimeofday(&t, NULL);
 
-    long long ret = t.tv_sec * 1000 + t.tv_usec / 1000;
-    return ret;
+  long long ret = t.tv_sec * 1000 + t.tv_usec / 1000;
+  return ret;
 #endif
 }
-
 
 /*#define EXIT_ON_GL_ERROR
 void gl_check_error(const char* function, const char *file, int line)
@@ -183,14 +175,11 @@ void gl_check_error(const char* function, const char *file, int line)
             break;
         case GL_OUT_OF_MEMORY: printf("OUT_OF_MEMORY");
             break;
-        case GL_INVALID_FRAMEBUFFER_OPERATION: printf("INVALID_FRAMEBUFFER_OPERATION");
-            break;
-        case GL_CONTEXT_LOST: printf("GL_CONTEXT_LOST");
-            break;
-        case GL_TABLE_TOO_LARGE: printf("GL_TABLE_TOO_LARGE");
-            break;
-        default:
-            printf("Unknown error code %d", error);
+        case GL_INVALID_FRAMEBUFFER_OPERATION:
+printf("INVALID_FRAMEBUFFER_OPERATION"); break; case GL_CONTEXT_LOST:
+printf("GL_CONTEXT_LOST"); break; case GL_TABLE_TOO_LARGE:
+printf("GL_TABLE_TOO_LARGE"); break; default: printf("Unknown error code %d",
+error);
         }
         printf(" encountered at function '%s' (%s:%d)\n", function, file, line);
     }
@@ -236,9 +225,9 @@ void glDebugOutput(GLenum source,
     switch (type)
     {
     case GL_DEBUG_TYPE_ERROR:               printf("Error\n"); break;
-    case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: printf("Deprecated Behaviour\n"); break;
-    case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:  printf("Undefined Behaviour\n"); break;
-    case GL_DEBUG_TYPE_PORTABILITY:         printf("Portability\n"); break;
+    case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: printf("Deprecated Behaviour\n");
+break; case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:  printf("Undefined Behaviour\n");
+break; case GL_DEBUG_TYPE_PORTABILITY:         printf("Portability\n"); break;
     case GL_DEBUG_TYPE_PERFORMANCE:         printf("Performance\n"); break;
     case GL_DEBUG_TYPE_MARKER:              printf("Marker\n"); break;
     case GL_DEBUG_TYPE_PUSH_GROUP:          printf("Push Group\n"); break;
@@ -257,32 +246,29 @@ void glDebugOutput(GLenum source,
 }
 */
 
-string GetDirFromFilename(const string& Filename)
-{
-    // Extract the directory part from the file name
-    string::size_type SlashIndex;
+string GetDirFromFilename(const string &Filename) {
+  // Extract the directory part from the file name
+  string::size_type SlashIndex;
 
 #ifdef _WIN64
-    SlashIndex = Filename.find_last_of("\\");
+  SlashIndex = Filename.find_last_of("\\");
 
-    if (SlashIndex == -1) {
-        SlashIndex = Filename.find_last_of("/");
-    }
-#else
+  if (SlashIndex == -1) {
     SlashIndex = Filename.find_last_of("/");
+  }
+#else
+  SlashIndex = Filename.find_last_of("/");
 #endif
 
-    string Dir;
+  string Dir;
 
-    if (SlashIndex == string::npos) {
-        Dir = ".";
-    }
-    else if (SlashIndex == 0) {
-        Dir = "/";
-    }
-    else {
-        Dir = Filename.substr(0, SlashIndex);
-    }
+  if (SlashIndex == string::npos) {
+    Dir = ".";
+  } else if (SlashIndex == 0) {
+    Dir = "/";
+  } else {
+    Dir = Filename.substr(0, SlashIndex);
+  }
 
-    return Dir;
+  return Dir;
 }

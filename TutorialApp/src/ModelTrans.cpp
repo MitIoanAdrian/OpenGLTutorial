@@ -37,6 +37,5 @@ Matrix4f ModelTrans::GetMatrix() {
 
   Matrix4f ModelTransformation = Translation * Rotation * Scale;
 
-    return ModelTransformation;
+  return ModelTransformation;
 }
-

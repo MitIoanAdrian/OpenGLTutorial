@@ -74,26 +74,27 @@ void ShadersProgram::link() {
     exit(1);
   }
 
-  //m_uOffsetLocation = glGetUniformLocation(m_Shader_Program, "gWorld");
-  //if (m_uOffsetLocation == -1) {
-  //  printf("Error getting uniform location of 'uOffset'\n");
-  //}
+  // m_uOffsetLocation = glGetUniformLocation(m_Shader_Program, "gWorld");
+  // if (m_uOffsetLocation == -1) {
+  //   printf("Error getting uniform location of 'uOffset'\n");
+  // }
 }
 
-const char* ShadersProgram::getUniformName(const std::size_t uniform_index) const {
-    return getUniformName(uniform_index);
+const char *
+ShadersProgram::getUniformName(const std::size_t uniform_index) const {
+  return getUniformName(uniform_index);
 }
 
-
-void ShadersProgram::setUniformVec2(UniformHelper::UniformType u, const Vector2f &Offset){
-    glUniform2f(m_uniformLocations[std::size_t(u)], Offset.x, Offset.y);
+void ShadersProgram::setUniformVec2(UniformHelper::UniformType u,
+                                    const Vector2f &Offset) {
+  glUniform2f(m_uniformLocations[std::size_t(u)], Offset.x, Offset.y);
 }
 
+void ShadersProgram::setUniformMat4(UniformHelper::UniformType u,
+                                    const Matrix4f &Matrix) {
 
-void ShadersProgram::setUniformMat4(UniformHelper::UniformType u, const Matrix4f& Matrix) {
-
-  glUniformMatrix4fv(m_uniformLocations[std::size_t(u)], 1, GL_TRUE, &Matrix.m[0][0]);
-   
+  glUniformMatrix4fv(m_uniformLocations[std::size_t(u)], 1, GL_TRUE,
+                     &Matrix.m[0][0]);
 }
 
 void ShadersProgram::create(const char *vs, const char *fs) {
@@ -112,12 +113,11 @@ void ShadersProgram::create(const char *vs, const char *fs) {
 
   link();
 
-    for(std::size_t i = 0; i < (std::size_t)UniformHelper::kUniformCount; i++)
-    {
-        const char * name = UniformHelper::getUniformName((UniformHelper::UniformType)i);
-        m_uniformLocations[i] = glGetUniformLocation(m_Shader_Program, name);
-    }
-  
+  for (std::size_t i = 0; i < (std::size_t)UniformHelper::kUniformCount; i++) {
+    const char *name =
+        UniformHelper::getUniformName((UniformHelper::UniformType)i);
+    m_uniformLocations[i] = glGetUniformLocation(m_Shader_Program, name);
+  }
 }
 
 void ShadersProgram::bind() { glUseProgram(m_Shader_Program); }

@@ -19,4 +19,3 @@ private:
   Vector3f m_rotation = Vector3f(0.0f, 0.0f, 0.0f);
   Vector3f m_pos = Vector3f(0.0f, 0.0f, 0.0f);
 };
-

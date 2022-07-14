@@ -2,13 +2,13 @@
 
 struct UniformHelper {
   enum UniformType {
-      kOffset = 0,
-      kModel,
-      kView,
-      kProjection,
-      kMVP,
-      kUniformCount
-      
+    kOffset = 0,
+    kModel,
+    kView,
+    kProjection,
+    kMVP,
+    kUniformCount
+
   };
 
   static const char *getUniformName(const UniformType t);
