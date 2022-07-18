@@ -12,6 +12,7 @@
 #include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
+#include <ogldev_math_3d.h>
 
 // file: Application.h
 class Application {
@@ -40,6 +41,9 @@ public:
   static char set_uniform(char);
 
 private:
+  void on_resize(int width, int height);
+
+private:
   // add members here:
   GLFWwindow *m_Window = nullptr; // m_ -> memeber
 
@@ -49,12 +53,13 @@ private:
 
   std::shared_ptr<ShadersProgram> s_Prog;
 
-  ModelTrans M;
+  ModelTrans m_model_transform;
 
-  Camera VP;
+  Camera m_camera;
 
   bool innit = 0;
 
   static void key_callback(GLFWwindow *, int, int, int, int);
   static void key_callback2(GLFWwindow *, int, int, int, int);
+  static void window_size_callback(GLFWwindow *window, int width, int height);
 };

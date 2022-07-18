@@ -12,7 +12,7 @@ public:
 
   void Rotate(float x, float y, float z);
 
-  Matrix4f GetMatrix();
+  Matrix4f GetMatrix() const;
 
 private:
   float m_scale = 1.0f;

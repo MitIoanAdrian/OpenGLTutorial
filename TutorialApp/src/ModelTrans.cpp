@@ -24,13 +24,13 @@ void ModelTrans::Rotate(float x, float y, float z) {
   m_rotation.z += z;
 }
 
-Matrix4f ModelTrans::GetMatrix() {
+Matrix4f ModelTrans::GetMatrix() const {
 
   Matrix4f Scale;
   Scale.InitScaleTransform(m_scale, m_scale, m_scale);
 
   Matrix4f Rotation;
-  Scale.InitRotateTransform(m_rotation.x, m_rotation.y, m_rotation.z);
+  Rotation.InitRotateTransform(m_rotation.x, m_rotation.y, m_rotation.z);
 
   Matrix4f Translation;
   Translation.InitTranslationTransform(m_pos.x, m_pos.y, m_pos.z);

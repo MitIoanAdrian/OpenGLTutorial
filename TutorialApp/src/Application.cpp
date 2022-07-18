@@ -8,59 +8,12 @@
 #include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
-
-// Vector2f uOffset(0.0f, 0.0f);
-Matrix4f MVP;
+#include <ogldev_math_3d.h>
 
 void Application::first_innit() {
 
-  static float Scale = 0.0f;
-
-#ifdef _WIN64
-  Scale += 0.001f;
-#else
-  Scale += 0.02f;
-#endif
-
-  Matrix4f Rotation(cosf(Scale), 0.0f, -sinf(Scale), 0.0f, 0.0f, 1.0f, 0.0f,
-                    0.0f, sinf(Scale), 0.0f, cosf(Scale), 0.0f, 0.0f, 0.0f,
-                    0.0f, 1.0f);
-
-  Matrix4f Translation(1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
-                       0.0f, 1.0f, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-
-  Matrix4f World = Translation * Rotation;
-
-  Vector3f CameraPos(0.0f, 0.0f, -1.0f);
-  Vector3f U(1.0f, 0.0f, 0.0f);
-  Vector3f V(0.0f, 1.0f, 0.0f);
-  Vector3f N(0.0f, 0.0f, 1.0f);
-
-  Matrix4f Camera(U.x, U.y, U.z, -CameraPos.x, V.x, V.y, V.z, -CameraPos.y, N.x,
-                  N.y, N.z, -CameraPos.z, 0.0f, 0.0f, 0.0f, 1.0f);
-
-  float VFOV = 45.0f;
-  float tanHalfVFOV = tanf(ToRadian(VFOV / 2.0f));
-  float d = 1 / tanHalfVFOV;
-
-  int width, height;
-
-  glfwGetWindowSize(m_Window, &width, &height);
-
-  float ar = (float)width / (float)height;
-
-  float NearZ = 1.0f;
-  float FarZ = 10.0f;
-
-  float zRange = NearZ - FarZ;
-
-  float A = (-FarZ - NearZ) / zRange;
-  float B = 2.0f * FarZ * NearZ / zRange;
-
-  Matrix4f Projection(d / ar, 0.0f, 0.0f, 0.0f, 0.0f, d, 0.0f, 0.0f, 0.0f, 0.0f,
-                      A, B, 0.0f, 0.0f, 1.0f, 0.0f);
-
-  MVP = Projection * Camera * World;
+  m_model_transform.setPosition(0.0f, 0.0f, 0.0f);
+  m_model_transform.Rotate(0.0f, 0.1f, 0.0f);
 
   v_Lay = std::make_shared<VertexLayout>();
   v_Buff = std::make_shared<VertexBuffer>();
@@ -102,6 +55,16 @@ void Application::first_innit() {
   s_Prog->create(vs, fs);
 }
 
+void Application::window_size_callback(GLFWwindow *window, int width,
+                                       int height) {
+  Application *handler =
+      reinterpret_cast<Application *>(glfwGetWindowUserPointer(window));
+
+  handler->on_resize(width, height);
+}
+void Application::on_resize(int width, int height) {
+  m_camera.setProjection(width, height);
+}
 bool Application::initialize(const char *window_name, std::size_t width,
                              std::size_t height) {
 
@@ -124,6 +87,10 @@ bool Application::initialize(const char *window_name, std::size_t width,
   glfwSetKeyCallback(m_Window, Application::key_callback);
   glfwSetWindowUserPointer(m_Window, this);
 
+  glfwSetWindowSizeCallback(m_Window, window_size_callback);
+
+  on_resize(width, height);
+
   return true;
 }
 
@@ -145,11 +112,20 @@ void Application::update(const float delta_seconds) {}
 void Application::render() {
 
   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-  if (!innit)
+  if (!innit) {
     first_innit();
+    innit = 1;
+  }
   glClear(GL_COLOR_BUFFER_BIT);
   s_Prog->bind();
-  s_Prog->setUniformMat4(UniformHelper::UniformType::kMVP, MVP);
+  /*if(cmove == 1){
+      VP.Move(m_key);
+      cmove = 0;
+  }*/
+
+  auto mvp = m_camera.getProjectionMatrix() * m_camera.getViewMatrix() *
+             m_model_transform.GetMatrix();
+  s_Prog->setUniformMat4(UniformHelper::UniformType::kMVP, mvp);
 
   v_Buff->bind();
 
@@ -162,17 +138,25 @@ void Application::key_callback(GLFWwindow *window, int key, int scancode,
       reinterpret_cast<Application *>(glfwGetWindowUserPointer(window));
 
   /*  if (key == GLFW_KEY_UP) {
-      uOffset.y += 0.05f;
+        m_key = key;
+        cmove = true;
+
     }
     if (key == GLFW_KEY_DOWN) {
-      uOffset.y -= 0.05f;
+        m_key = key;
+        cmove = true;
     }
     if (key == GLFW_KEY_LEFT) {
-      uOffset.x -= 0.05f;
+        m_key = key;
+        cmove = true;
     }
     if (key == GLFW_KEY_RIGHT) {
-      uOffset.x += 0.05f;
+        m_key = key;
+        cmove = true;
     }*/
+
+  // handler->on_key(...);
+
   if (key == GLFW_KEY_ESCAPE)
     glfwSetWindowShouldClose(handler->m_Window, GLFW_TRUE);
 }

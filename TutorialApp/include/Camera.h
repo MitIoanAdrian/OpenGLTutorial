@@ -8,20 +8,23 @@ public:
 
   void LookAt(float x, float y, float z);
 
-  void Move(unsigned char Key);
-
-  Matrix4f getViewMatrix();
+  void Move(int Key);
 
 public:
-  void setProjection(float near, float far, float fov, float view_size);
+  void setProjection(float height, float width);
 
   Matrix4f getProjectionMatrix();
+  Matrix4f getViewMatrix();
 
 private:
-  Matrix4f m_Projection;
-
   Vector3f m_pos;
   Vector3f m_target;
   Vector3f m_up;
-  float m_speed = 1;
+  float m_near = 1.0f;
+  float m_far = 1000.0f;
+  float m_fov = 90.0f;
+
+protected:
+  Matrix4f m_Projection;
+  Matrix4f m_View;
 };
