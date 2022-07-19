@@ -9,9 +9,9 @@ Camera::Camera() {
 }
 
 void Camera::LookAt(float x, float y, float z) {
-  m_pos.x = x;
-  m_pos.y = y;
-  m_pos.z = z;
+  m_target.x = x;
+  m_target.y = y;
+  m_target.z = z;
 }
 
 void Camera::Move(Vector3f distance) { m_pos += distance; }
@@ -22,6 +22,10 @@ Matrix4f Camera::getViewMatrix() {
 
   return m_View;
 }
+
+Vector3f Camera::getTarget() { return m_target; }
+
+Vector3f Camera::getPosition() { return m_pos; }
 
 void Camera::setProjection(float height, float width) {
 

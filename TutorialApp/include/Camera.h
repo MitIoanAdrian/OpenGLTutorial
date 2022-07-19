@@ -13,6 +13,9 @@ public:
 public:
   void setProjection(float height, float width);
 
+  Vector3f getPosition();
+  Vector3f getTarget();
+
   Matrix4f getProjectionMatrix();
   Matrix4f getViewMatrix();
 

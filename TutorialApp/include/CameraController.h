@@ -4,7 +4,5 @@
 
 class CameraController {
 public:
-  void moveCamera(int key, Camera camera);
-
-private:
+  Vector3f moveCamera(int key, Vector3f camera_pos, Vector3f camera_target);
 };
