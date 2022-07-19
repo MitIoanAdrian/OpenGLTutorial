@@ -16,6 +16,7 @@ add_executable(
 	src/AttributeHelper.cpp
 	src/ModelTrans.cpp
 	src/Camera.cpp
+	src/CameraController.cpp
 	src/math_3d.cpp
 	src/ogldev_util.cpp
 	src/UniformHelper.cpp
@@ -29,6 +30,7 @@ add_executable(
 	include/AttributeHelper.h
 	include/ModelTrans.h
 	include/Camera.h
+	include/CameraController.h
 	include/UniformHelper.h
 	shaders/shader.vs
 	shaders/shader.fs

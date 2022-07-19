@@ -8,7 +8,7 @@ public:
 
   void LookAt(float x, float y, float z);
 
-  void Move(int Key);
+  void Move(Vector3f distance);
 
 public:
   void setProjection(float height, float width);

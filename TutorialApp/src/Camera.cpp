@@ -14,55 +14,8 @@ void Camera::LookAt(float x, float y, float z) {
   m_pos.z = z;
 }
 
-void Camera::Move(int Key) {
-  /*  switch (Key) {
-
-    case GLFW_KEY_UP:
-      m_pos += (m_target * m_speed);
-      break;
-
-    case GLFW_KEY_DOWN:
-      m_pos -= (m_target * m_speed);
-      break;
-
-    case GLFW_KEY_LEFT: {
-      Vector3f Left = m_target.Cross(m_up);
-      Left.Normalize();
-      Left *= m_speed;
-      m_pos += Left;
-    }
-
-    break;
-
-    case GLFW_KEY_RIGHT: {
-      Vector3f Right = m_up.Cross(m_target);
-      Right.Normalize();
-      Right *= m_speed;
-      m_pos += Right;
-    } break;
-
-    case GLFW_KEY_W:
-      m_pos.y += m_speed;
-      break;
-
-    case GLFW_KEY_S:
-      m_pos -= m_speed;
-      break;
-
-    case '+': {
-      m_speed -= 0.1f;
-      printf("Speed changed to %f\n", m_speed);
-    } break;
-
-    case '-': {
-      m_speed -= 0.1f;
-      if (m_speed < 0.1f)
-        m_speed = 0.1f;
-      printf("Speed changed to %f\n", m_speed);
-    }
-
-    break;
-    }*/
+void Camera::Move(Vector3f distance) {
+    m_pos += distance;
 }
 
 Matrix4f Camera::getViewMatrix() {

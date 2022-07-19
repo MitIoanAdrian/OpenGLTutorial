@@ -10,11 +10,13 @@
 #include <VertexLayout.h>
 #include <ogldev_math_3d.h>
 
+
+
 void Application::first_innit() {
 
-  m_model_transform.setPosition(0.0f, 0.0f, 0.0f);
-  m_model_transform.Rotate(0.0f, 0.1f, 0.0f);
 
+  
+  m_model_transform.setPosition(0.0f, 0.0f, 0.0f);
   v_Lay = std::make_shared<VertexLayout>();
   v_Buff = std::make_shared<VertexBuffer>();
   s_Prog = std::make_shared<ShadersProgram>();
@@ -55,6 +57,14 @@ void Application::first_innit() {
   s_Prog->create(vs, fs);
 }
 
+
+void Application::on_resize(int width, int height) {
+    float fwidth = (float)width;
+    float fheight = (float)height;
+  m_camera.setProjection(fwidth, fheight);
+}
+
+
 void Application::window_size_callback(GLFWwindow *window, int width,
                                        int height) {
   Application *handler =
@@ -62,9 +72,11 @@ void Application::window_size_callback(GLFWwindow *window, int width,
 
   handler->on_resize(width, height);
 }
-void Application::on_resize(int width, int height) {
-  m_camera.setProjection(width, height);
-}
+
+/*void Application::on_key(int key){
+    m_control.moveCamera(key, m_camera);
+}*/
+
 bool Application::initialize(const char *window_name, std::size_t width,
                              std::size_t height) {
 
@@ -117,12 +129,8 @@ void Application::render() {
     innit = 1;
   }
   glClear(GL_COLOR_BUFFER_BIT);
+  m_model_transform.Rotate(0.0f, 1.0f, 0.0f);
   s_Prog->bind();
-  /*if(cmove == 1){
-      VP.Move(m_key);
-      cmove = 0;
-  }*/
-
   auto mvp = m_camera.getProjectionMatrix() * m_camera.getViewMatrix() *
              m_model_transform.GetMatrix();
   s_Prog->setUniformMat4(UniformHelper::UniformType::kMVP, mvp);
@@ -137,25 +145,7 @@ void Application::key_callback(GLFWwindow *window, int key, int scancode,
   Application *handler =
       reinterpret_cast<Application *>(glfwGetWindowUserPointer(window));
 
-  /*  if (key == GLFW_KEY_UP) {
-        m_key = key;
-        cmove = true;
-
-    }
-    if (key == GLFW_KEY_DOWN) {
-        m_key = key;
-        cmove = true;
-    }
-    if (key == GLFW_KEY_LEFT) {
-        m_key = key;
-        cmove = true;
-    }
-    if (key == GLFW_KEY_RIGHT) {
-        m_key = key;
-        cmove = true;
-    }*/
-
-  // handler->on_key(...);
+ //  handler->on_key(key);
 
   if (key == GLFW_KEY_ESCAPE)
     glfwSetWindowShouldClose(handler->m_Window, GLFW_TRUE);
