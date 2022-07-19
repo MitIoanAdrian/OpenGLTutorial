@@ -10,12 +10,8 @@
 #include <VertexLayout.h>
 #include <ogldev_math_3d.h>
 
-
-
 void Application::first_innit() {
 
-
-  
   m_model_transform.setPosition(0.0f, 0.0f, 0.0f);
   v_Lay = std::make_shared<VertexLayout>();
   v_Buff = std::make_shared<VertexBuffer>();
@@ -57,13 +53,11 @@ void Application::first_innit() {
   s_Prog->create(vs, fs);
 }
 
-
 void Application::on_resize(int width, int height) {
-    float fwidth = (float)width;
-    float fheight = (float)height;
+  float fwidth = (float)width;
+  float fheight = (float)height;
   m_camera.setProjection(fwidth, fheight);
 }
-
 
 void Application::window_size_callback(GLFWwindow *window, int width,
                                        int height) {
@@ -145,7 +139,7 @@ void Application::key_callback(GLFWwindow *window, int key, int scancode,
   Application *handler =
       reinterpret_cast<Application *>(glfwGetWindowUserPointer(window));
 
- //  handler->on_key(key);
+  //  handler->on_key(key);
 
   if (key == GLFW_KEY_ESCAPE)
     glfwSetWindowShouldClose(handler->m_Window, GLFW_TRUE);

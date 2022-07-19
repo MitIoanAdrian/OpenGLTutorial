@@ -4,9 +4,7 @@
 
 class CameraController {
 public:
-    void moveCamera(int key, Camera camera);
-    
-    
+  void moveCamera(int key, Camera camera);
+
 private:
- 
 };

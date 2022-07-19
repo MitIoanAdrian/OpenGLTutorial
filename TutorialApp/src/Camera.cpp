@@ -14,9 +14,7 @@ void Camera::LookAt(float x, float y, float z) {
   m_pos.z = z;
 }
 
-void Camera::Move(Vector3f distance) {
-    m_pos += distance;
-}
+void Camera::Move(Vector3f distance) { m_pos += distance; }
 
 Matrix4f Camera::getViewMatrix() {
 

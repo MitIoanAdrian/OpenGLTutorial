@@ -8,12 +8,12 @@
 #pragma once
 
 #include <Camera.h>
+#include <CameraController.h>
 #include <ModelTrans.h>
 #include <ShadersProgram.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
 #include <ogldev_math_3d.h>
-#include <CameraController.h>
 
 // file: Application.h
 class Application {
@@ -43,7 +43,7 @@ public:
 
 private:
   void on_resize(int width, int height);
-    void on_key(int key);
+  void on_key(int key);
 
 private:
   // add members here:
@@ -58,14 +58,13 @@ private:
   ModelTrans m_model_transform;
 
   Camera m_camera;
-    
-    CameraController m_control;
 
+  CameraController m_control;
 
   bool innit = 0;
 
   static void key_callback(GLFWwindow *window, int key, int scancode,
                            int action, int mods);
-  //static void key_callback2(GLFWwindow *, int, int, int, int);
+  // static void key_callback2(GLFWwindow *, int, int, int, int);
   static void window_size_callback(GLFWwindow *window, int width, int height);
 };

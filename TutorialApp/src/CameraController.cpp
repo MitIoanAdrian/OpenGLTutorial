@@ -1,8 +1,4 @@
 #include <CameraController.h>
 #include <OGL.h>
 
-
-void CameraController::moveCamera(int key, Camera camera){
-    
-
-}
+void CameraController::moveCamera(int key, Camera camera) {}
