@@ -67,8 +67,8 @@ void Application::window_size_callback(GLFWwindow *window, int width,
   handler->on_resize(width, height);
 }
 
-//void Application::on_key(int key){
-  //  m_control.moveCamera(key, m_camera);
+// void Application::on_key(int key){
+//   m_control.moveCamera(key, m_camera);
 //}
 
 bool Application::initialize(const char *window_name, std::size_t width,
@@ -139,7 +139,7 @@ void Application::key_callback(GLFWwindow *window, int key, int scancode,
   Application *handler =
       reinterpret_cast<Application *>(glfwGetWindowUserPointer(window));
 
- //   handler->on_key(key);
+  //   handler->on_key(key);
 
   if (key == GLFW_KEY_ESCAPE)
     glfwSetWindowShouldClose(handler->m_Window, GLFW_TRUE);
