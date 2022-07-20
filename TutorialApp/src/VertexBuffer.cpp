@@ -17,7 +17,7 @@ VertexBuffer::VertexBuffer() {
   glGenBuffers(1, &m_Buff);
 }
 
-void VertexBuffer::bind() {
+void VertexBuffer::bind() const {
 
   glBindVertexArray(m_VAO);
 

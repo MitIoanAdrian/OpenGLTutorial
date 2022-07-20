@@ -20,6 +20,7 @@ add_executable(
 	src/math_3d.cpp
 	src/ogldev_util.cpp
 	src/UniformHelper.cpp
+	src/IndexBuffer.cpp
 	include/Application.hpp
 	include/VertexLayout.h
 	include/OGL.h
@@ -32,6 +33,7 @@ add_executable(
 	include/Camera.h
 	include/CameraController.h
 	include/UniformHelper.h
+	include/IndexBuffer.h
 	shaders/shader.vs
 	shaders/shader.fs
 )

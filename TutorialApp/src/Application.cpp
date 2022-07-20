@@ -16,36 +16,27 @@ void Application::first_innit() {
   v_Lay = std::make_shared<VertexLayout>();
   v_Buff = std::make_shared<VertexBuffer>();
   s_Prog = std::make_shared<ShadersProgram>();
+  i_Buff = std::make_shared<IndexBuffer>();
 
   v_Lay->AddVertexAttribute(AttributeHelper::kPosition, 3);
   v_Lay->AddVertexAttribute(AttributeHelper::kColor, 3);
 
-  float data[] = {
-      -0.5f, -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,  -0.5f, -0.5f, 0.5f,  0.0f,
-      1.0f,  0.0f,  -0.5f, 0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.5f,  0.5f,
-      -0.5f, 1.0f,  0.0f,  0.0f,  -0.5f, -0.5f, -0.5f, 0.0f,  1.0f,  0.0f,
-      -0.5f, 0.5f,  -0.5f, 0.0f,  0.0f,  1.0f,  0.5f,  -0.5f, 0.5f,  1.0f,
-      0.0f,  0.0f,  -0.5f, -0.5f, -0.5f, 0.0f,  1.0f,  0.0f,  0.5f,  -0.5f,
-      -0.5f, 0.0f,  0.0f,  1.0f,  0.5f,  0.5f,  -0.5f, 1.0f,  0.0f,  0.0f,
-      0.5f,  -0.5f, -0.5f, 0.0f,  1.0f,  0.0f,  -0.5f, -0.5f, -0.5f, 0.0f,
-      0.0f,  1.0f,  -0.5f, -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,  -0.5f, 0.5f,
-      0.5f,  0.0f,  1.0f,  0.0f,  -0.5f, 0.5f,  -0.5f, 0.0f,  0.0f,  1.0f,
-      0.5f,  -0.5f, 0.5f,  1.0f,  0.0f,  0.0f,  -0.5f, -0.5f, 0.5f,  0.0f,
-      1.0f,  0.0f,  -0.5f, -0.5f, -0.5f, 0.0f,  0.0f,  1.0f,  -0.5f, 0.5f,
-      0.5f,  1.0f,  0.0f,  0.0f,  -0.5f, -0.5f, 0.5f,  0.0f,  1.0f,  0.0f,
-      0.5f,  -0.5f, 0.5f,  0.0f,  0.0f,  1.0f,  0.5f,  0.5f,  0.5f,  1.0f,
-      0.0f,  0.0f,  0.5f,  -0.5f, -0.5f, 0.0f,  1.0f,  0.0f,  0.5f,  0.5f,
-      -0.5f, 0.0f,  0.0f,  1.0f,  0.5f,  -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,
-      0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.5f,  -0.5f, 0.5f,  0.0f,
-      0.0f,  1.0f,  0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.5f,  0.5f,
-      -0.5f, 0.0f,  1.0f,  0.0f,  -0.5f, 0.5f,  -0.5f, 0.0f,  0.0f,  1.0f,
-      0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  -0.5f, 0.5f,  -0.5f, 0.0f,
-      1.0f,  0.0f,  -0.5f, 0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.5f,  0.5f,
-      0.5f,  1.0f,  0.0f,  0.0f,  -0.5f, 0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-      0.5f,  -0.5f, 0.5f,  0.0f,  0.0f,  1.0f};
+  float vertex_data[] = {0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  -0.5f, 0.5f,
+                         -0.5f, 0.0f,  1.0f,  0.0f,  -0.5f, 0.5f,  0.5f,  0.0f,
+                         0.0f,  1.0f,  0.5f,  -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,
+                         -0.5f, -0.5f, -0.5f, 0.0f,  1.0f,  0.0f,  0.5f,  0.5f,
+                         -0.5f, 0.0f,  0.0f,  1.0f,  0.5f,  -0.5f, 0.5f,  1.0f,
+                         0.0f,  0.0f,  -0.5f, -0.5f, 0.5f,  0.0f,  1.0f,  0.0f};
 
-  v_Buff->create(data, *v_Lay, sizeof(data) / v_Lay->getSize());
+  v_Buff->create(vertex_data, *v_Lay, sizeof(vertex_data) / v_Lay->getSize());
   v_Buff->bind();
+
+  unsigned int index_data[] = {0, 1, 2, 1, 3, 4, 5, 6, 3, 7, 3, 6,
+                               2, 4, 7, 0, 7, 6, 0, 5, 1, 1, 5, 3,
+                               5, 0, 6, 7, 4, 3, 2, 1, 4, 0, 2, 7};
+  i_Buff->create(*v_Buff, index_data, sizeof(index_data));
+  i_Buff->bind();
+
   const char *vs = "/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/"
                    "TutorialApp/shaders/shader.vs";
   const char *fs = "/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/"
@@ -131,8 +122,13 @@ void Application::render() {
   s_Prog->setUniformMat4(UniformHelper::UniformType::kMVP, mvp);
 
   v_Buff->bind();
+  i_Buff->bind();
 
-  glDrawArrays(GL_TRIANGLES, 0, 36);
+  glEnable(GL_CULL_FACE);
+  glFrontFace(GL_CW);
+  glCullFace(GL_BACK);
+
+  glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 }
 
 void Application::key_callback(GLFWwindow *window, int key, int scancode,

@@ -18,7 +18,7 @@ public:
   ~VertexBuffer();
 
 public:
-  void bind();
+  void bind() const;
 
 public:
   void create(const void *data, const VertexLayout &vertex_layout,

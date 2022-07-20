@@ -9,6 +9,7 @@
 
 #include <Camera.h>
 #include <CameraController.h>
+#include <IndexBuffer.h>
 #include <ModelTrans.h>
 #include <ShadersProgram.h>
 #include <VertexBuffer.h>
@@ -54,6 +55,8 @@ private:
   std::shared_ptr<VertexLayout> v_Lay;
 
   std::shared_ptr<ShadersProgram> s_Prog;
+
+  std::shared_ptr<IndexBuffer> i_Buff;
 
   ModelTrans m_model_transform;
 
