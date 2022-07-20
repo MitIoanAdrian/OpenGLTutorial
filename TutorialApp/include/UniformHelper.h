@@ -3,10 +3,8 @@
 struct UniformHelper {
   enum UniformType {
     kOffset = 0,
-    kModel,
-    kView,
-    kProjection,
     kMVP,
+    kTexture,
     kUniformCount
 
   };

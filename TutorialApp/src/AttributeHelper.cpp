@@ -9,6 +9,9 @@ const char *AttributeHelper::getAttributeName(const AttributeType t) {
   case AttributeHelper::AttributeType::kPosition:
     return "Position";
     break;
+  case AttributeHelper::AttributeType::kUV:
+    return "UV";
+    break;
   case AttributeHelper::AttributeType::kAttributeCount:
     return "AttributeCount"; // also used for "invalid" attribute
     break;
@@ -24,5 +27,7 @@ AttributeHelper::getAttributeType(const char *attribute_name) {
     return AttributeHelper::AttributeType::kColor;
   if (strcmp(attribute_name, "Position") == 0)
     return AttributeHelper::AttributeType::kPosition;
+  if (strcmp(attribute_name, "UV") == 0)
+    return AttributeHelper::AttributeType::kUV;
   return AttributeHelper::AttributeType::kAttributeCount;
 }

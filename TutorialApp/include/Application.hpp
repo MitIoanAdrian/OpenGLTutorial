@@ -12,6 +12,7 @@
 #include <IndexBuffer.h>
 #include <ModelTrans.h>
 #include <ShadersProgram.h>
+#include <Texture.h>
 #include <VertexBuffer.h>
 #include <VertexLayout.h>
 #include <ogldev_math_3d.h>
@@ -63,6 +64,8 @@ private:
   Camera m_camera;
 
   CameraController m_control;
+
+  std::shared_ptr<Texture> m_Texture;
 
   bool innit = 0;
 

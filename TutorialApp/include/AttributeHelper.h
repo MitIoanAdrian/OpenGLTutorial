@@ -5,6 +5,7 @@ struct AttributeHelper {
   enum AttributeType {
     kPosition = 0,
     kColor,
+    kUV,
     kAttributeCount
 
   };

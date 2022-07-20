@@ -16,16 +16,16 @@ void Camera::LookAt(float x, float y, float z) {
 
 void Camera::Move(Vector3f distance) { m_pos += distance; }
 
-Matrix4f Camera::getViewMatrix() {
+const Matrix4f &Camera::getViewMatrix() {
 
   m_View.InitCameraTransform(m_pos, m_target, m_up);
 
   return m_View;
 }
 
-Vector3f Camera::getTarget() { return m_target; }
+const Vector3f &Camera::getTarget() { return m_target; }
 
-Vector3f Camera::getPosition() { return m_pos; }
+const Vector3f &Camera::getPosition() { return m_pos; }
 
 void Camera::setProjection(float height, float width) {
 
@@ -34,4 +34,4 @@ void Camera::setProjection(float height, float width) {
   m_Projection.InitPersProjTransform(PersProjInfo);
 }
 
-Matrix4f Camera::getProjectionMatrix() { return m_Projection; }
+const Matrix4f &Camera::getProjectionMatrix() { return m_Projection; }

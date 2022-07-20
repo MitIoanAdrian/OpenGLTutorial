@@ -18,6 +18,7 @@ public:
 
   const char *getAttributeName(const std::size_t attribute_index) const;
 
+  void setUniform1i(UniformHelper::UniformType u, int v);
   void setUniformMat4(UniformHelper::UniformType u, const Matrix4f &);
   void setUniformVec2(UniformHelper::UniformType u, const Vector2f &);
 

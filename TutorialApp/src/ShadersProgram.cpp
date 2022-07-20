@@ -1,3 +1,4 @@
+#include <AttributeHelper.h>
 #include <OGL.h>
 #include <ShadersProgram.h>
 #include <fstream>
@@ -85,6 +86,10 @@ ShadersProgram::getUniformName(const std::size_t uniform_index) const {
   return getUniformName(uniform_index);
 }
 
+void ShadersProgram::setUniform1i(UniformHelper::UniformType u, int v) {
+  glUniform1i(m_uniformLocations[std::size_t(u)], v);
+}
+
 void ShadersProgram::setUniformVec2(UniformHelper::UniformType u,
                                     const Vector2f &Offset) {
   glUniform2f(m_uniformLocations[std::size_t(u)], Offset.x, Offset.y);
@@ -111,8 +116,13 @@ void ShadersProgram::create(const char *vs, const char *fs) {
 
   addShader(readFile(m_Fragment_Shader).c_str(), GL_FRAGMENT_SHADER);
 
-  link();
+  for (std::size_t i = 0; i < AttributeHelper::kAttributeCount; i++) {
+    glBindAttribLocation(
+        m_Shader_Program, int(i),
+        AttributeHelper::getAttributeName(AttributeHelper::AttributeType(i)));
+  }
 
+  link();
   for (std::size_t i = 0; i < (std::size_t)UniformHelper::kUniformCount; i++) {
     const char *name =
         UniformHelper::getUniformName((UniformHelper::UniformType)i);

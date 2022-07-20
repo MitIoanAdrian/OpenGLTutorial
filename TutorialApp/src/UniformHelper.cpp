@@ -9,6 +9,8 @@ const char *UniformHelper::getUniformName(const UniformType t) {
   case UniformHelper::UniformType::kMVP:
     return "MVP";
     break;
+  case UniformHelper::UniformType::kTexture:
+    return "Textre";
   case UniformHelper::UniformType::kUniformCount:
     return "UniformCount";
     break;
@@ -24,5 +26,7 @@ UniformHelper::getUniformType(const char *uniform_name) {
     return UniformHelper::UniformType::kOffset;
   if (strcmp(uniform_name, "MVP") == 0)
     return UniformHelper::UniformType::kMVP;
+  if (strcmp(uniform_name, "Texture") == 0)
+    return UniformHelper::UniformType::kTexture;
   return UniformHelper::UniformType::kUniformCount;
 }

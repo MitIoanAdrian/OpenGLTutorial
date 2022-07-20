@@ -21,6 +21,7 @@ add_executable(
 	src/ogldev_util.cpp
 	src/UniformHelper.cpp
 	src/IndexBuffer.cpp
+	src/Texture.cpp
 	include/Application.hpp
 	include/VertexLayout.h
 	include/OGL.h
@@ -34,8 +35,11 @@ add_executable(
 	include/CameraController.h
 	include/UniformHelper.h
 	include/IndexBuffer.h
+	include/stb_image.h
+	include/Texture.h
 	shaders/shader.vs
 	shaders/shader.fs
+	textures/bricks.jpeg
 )
 
 
