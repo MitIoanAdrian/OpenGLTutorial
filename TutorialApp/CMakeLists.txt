@@ -8,20 +8,6 @@ find_package(OpenGL)
 if(${GLFW_FOUND})
 add_executable(
 	TutorialApp
-	src/main.cpp
-	src/Application.cpp
-	src/VertexLayout.cpp
-	src/VertexBuffer.cpp
-	src/ShadersProgram.cpp
-	src/AttributeHelper.cpp
-	src/ModelTrans.cpp
-	src/Camera.cpp
-	src/CameraController.cpp
-	src/math_3d.cpp
-	src/ogldev_util.cpp
-	src/UniformHelper.cpp
-	src/IndexBuffer.cpp
-	src/Texture.cpp
 	include/Application.hpp
 	include/VertexLayout.h
 	include/OGL.h
@@ -37,6 +23,22 @@ add_executable(
 	include/IndexBuffer.h
 	include/stb_image.h
 	include/Texture.h
+	include/ResourceManager.h
+	src/main.cpp
+	src/Application.cpp
+	src/VertexLayout.cpp
+	src/VertexBuffer.cpp
+	src/ShadersProgram.cpp
+	src/AttributeHelper.cpp
+	src/ModelTrans.cpp
+	src/Camera.cpp
+	src/CameraController.cpp
+	src/math_3d.cpp
+	src/ogldev_util.cpp
+	src/UniformHelper.cpp
+	src/IndexBuffer.cpp
+	src/Texture.cpp
+	src/ResourceManager.cpp
 	shaders/shader.vs
 	shaders/shader.fs
 	textures/bricks.jpeg

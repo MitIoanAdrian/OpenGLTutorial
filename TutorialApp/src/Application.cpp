@@ -13,15 +13,14 @@
 
 void Application::first_innit() {
 
-  const char *txtr = "/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/"
-                     "TutorialApp/textures/bricks.jpeg";
+  const char *txtr = "bricks.jpeg";
 
   m_model_transform.setPosition(0.0f, 0.0f, 0.0f);
+  r_Manager = std::make_shared<ResourceManager>();
   v_Lay = std::make_shared<VertexLayout>();
   v_Buff = std::make_shared<VertexBuffer>();
-  s_Prog = std::make_shared<ShadersProgram>();
   i_Buff = std::make_shared<IndexBuffer>();
-  m_Texture = std::make_shared<Texture>(GL_TEXTURE_2D, txtr);
+  m_Texture = r_Manager->getTexture(txtr, GL_TEXTURE_2D);
 
   v_Lay->AddVertexAttribute(AttributeHelper::kPosition, 3);
   v_Lay->AddVertexAttribute(AttributeHelper::kUV, 2);
@@ -45,11 +44,7 @@ void Application::first_innit() {
   m_Texture->load();
   m_Texture->bind(0);
 
-  const char *vs = "/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/"
-                   "TutorialApp/shaders/shader.vs";
-  const char *fs = "/Users/adrianm2/Desktop/OpenGLWindow/OpenGLWindow/"
-                   "TutorialApp/shaders/shader.fs";
-  s_Prog->create(vs, fs);
+  s_Prog = r_Manager->createShader("shader");
 }
 
 void Application::on_resize(int width, int height) {

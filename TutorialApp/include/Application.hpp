@@ -11,6 +11,7 @@
 #include <CameraController.h>
 #include <IndexBuffer.h>
 #include <ModelTrans.h>
+#include <ResourceManager.h>
 #include <ShadersProgram.h>
 #include <Texture.h>
 #include <VertexBuffer.h>
@@ -58,6 +59,8 @@ private:
   std::shared_ptr<ShadersProgram> s_Prog;
 
   std::shared_ptr<IndexBuffer> i_Buff;
+
+  std::shared_ptr<ResourceManager> r_Manager;
 
   ModelTrans m_model_transform;
 
