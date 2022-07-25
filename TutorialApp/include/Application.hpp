@@ -24,56 +24,39 @@ public:
   Application() = default;
   Application &operator=(const Application &) = delete;
 
-public:
-  void first_innit();
-
-  bool initialize(const char *window_name, std::size_t width,
-                  std::size_t height);
-
-  void update(const float delta_seconds);
-  //^ called from run() function. delta seconds is the ammount of time (in
-  // seconds) that passed since the last update() call. First call has 0 as
-  // argument.
-
-  void render();
-  //^ called from run() function.
-
-public:
-  void run();
+  virtual void run();
   //^ this functions keeps the application alive until user presses escape
 
-  static char set_uniform(char);
-
 private:
-  void on_resize(int width, int height);
-  void on_key(int key);
+  GLFWwindow *m_Window = nullptr;
 
-private:
-  // add members here:
-  GLFWwindow *m_Window = nullptr; // m_ -> memeber
+  int m_Width = 0;
+  int m_Height = 0;
 
-  std::shared_ptr<VertexBuffer> v_Buff;
-
-  std::shared_ptr<VertexLayout> v_Lay;
-
-  std::shared_ptr<ShadersProgram> s_Prog;
-
-  std::shared_ptr<IndexBuffer> i_Buff;
-
-  std::shared_ptr<ResourceManager> r_Manager;
-
-  ModelTrans m_model_transform;
-
-  Camera m_camera;
-
-  CameraController m_control;
-
-  std::shared_ptr<Texture> m_Texture;
-
-  bool innit = 0;
+  ResourceManager m_ResourceManager;
 
   static void key_callback(GLFWwindow *window, int key, int scancode,
                            int action, int mods);
-  // static void key_callback2(GLFWwindow *, int, int, int, int);
-  static void window_size_callback(GLFWwindow *window, int width, int height);
+
+  static void window_size_callback(GLFWwindow *window, int with, int height);
+
+protected:
+  bool init_window(const char *window_name, std::size_t width,
+                   std::size_t height);
+
+  //  void update(const float delta_seconds);
+
+  virtual void render() = 0;
+
+  int getWidth() const;
+
+  int getHeight() const;
+
+  int on_key(int key);
+
+  virtual void key_callback(Application *App, int key) {}
+
+  virtual void window_callback(Application *App, int width, int height) {}
+
+  ResourceManager &getResourceManager();
 };

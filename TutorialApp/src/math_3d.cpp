@@ -265,12 +265,12 @@ void Matrix4f::InitPersProjTransform(const PersProjInfo &p) {
   float zRange = p.zNear - p.zFar;
   float tanHalfFOV = tanf(ToRadian(p.FOV / 2.0f));
 
-  m[0][0] = (1.0f / tanHalfFOV) / ar;
+  m[0][0] = 1.0f / tanHalfFOV;
   m[0][1] = 0.0f;
   m[0][2] = 0.0f;
   m[0][3] = 0.0f;
   m[1][0] = 0.0f;
-  m[1][1] = 1.0f / tanHalfFOV;
+  m[1][1] = 1.0f / (tanHalfFOV * ar);
   m[1][2] = 0.0f;
   m[1][3] = 0.0f;
   m[2][0] = 0.0f;

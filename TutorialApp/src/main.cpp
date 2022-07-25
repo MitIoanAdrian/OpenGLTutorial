@@ -1,11 +1,11 @@
-#include <Application.hpp>
+#include <Engine.h>
 
 int main() {
-  Application a;
-  if (!a.initialize("demo", 800, 600))
+  Engine e;
+  if (!e.initialize("demo", 800, 600))
     return -1;
 
-  a.run();
+  e.run();
 
   return 0;
 }

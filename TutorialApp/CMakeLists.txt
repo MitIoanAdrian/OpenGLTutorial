@@ -24,6 +24,7 @@ add_executable(
 	include/stb_image.h
 	include/Texture.h
 	include/ResourceManager.h
+	include/Engine.h
 	src/main.cpp
 	src/Application.cpp
 	src/VertexLayout.cpp
@@ -39,6 +40,7 @@ add_executable(
 	src/IndexBuffer.cpp
 	src/Texture.cpp
 	src/ResourceManager.cpp
+	src/Engine.cpp
 	shaders/shader.vs
 	shaders/shader.fs
 	textures/bricks.jpeg

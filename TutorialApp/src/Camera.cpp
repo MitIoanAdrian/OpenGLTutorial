@@ -23,9 +23,9 @@ const Matrix4f &Camera::getViewMatrix() {
   return m_View;
 }
 
-const Vector3f &Camera::getTarget() { return m_target; }
+const Vector3f &Camera::getTarget() const { return m_target; }
 
-const Vector3f &Camera::getPosition() { return m_pos; }
+const Vector3f &Camera::getPosition() const { return m_pos; }
 
 void Camera::setProjection(float height, float width) {
 
@@ -34,4 +34,4 @@ void Camera::setProjection(float height, float width) {
   m_Projection.InitPersProjTransform(PersProjInfo);
 }
 
-const Matrix4f &Camera::getProjectionMatrix() { return m_Projection; }
+const Matrix4f &Camera::getProjectionMatrix() const { return m_Projection; }
