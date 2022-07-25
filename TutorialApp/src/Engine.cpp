@@ -89,6 +89,7 @@ void Engine::render() {
 
   m_Shaders->bind();
 
+  m_Camera.updateCamera();
   auto mvp = m_Camera.getProjectionMatrix() * m_Camera.getViewMatrix() *
              m_Model.GetMatrix();
 

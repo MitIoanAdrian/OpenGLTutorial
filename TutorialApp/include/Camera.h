@@ -12,13 +12,14 @@ public:
 
 public:
   void setProjection(float height, float width);
+  void updateCamera();
   const void setViewMatrix();
 
   const Vector3f &getPosition() const;
   const Vector3f &getTarget() const;
 
   const Matrix4f &getProjectionMatrix() const;
-  const Matrix4f &getViewMatrix();
+  const Matrix4f &getViewMatrix() const;
 
 private:
   Vector3f m_pos;

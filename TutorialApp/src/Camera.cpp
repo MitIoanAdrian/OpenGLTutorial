@@ -16,12 +16,11 @@ void Camera::LookAt(float x, float y, float z) {
 
 void Camera::Move(Vector3f distance) { m_pos += distance; }
 
-const Matrix4f &Camera::getViewMatrix() {
-
+void Camera::updateCamera() {
   m_View.InitCameraTransform(m_pos, m_target, m_up);
-
-  return m_View;
 }
+
+const Matrix4f &Camera::getViewMatrix() const { return m_View; }
 
 const Vector3f &Camera::getTarget() const { return m_target; }
 
