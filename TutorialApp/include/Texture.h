@@ -5,7 +5,7 @@
 
 class Texture {
 public:
-  Texture(GLenum TextureTarget, const std::string &FileName);
+  Texture(const std::string &FileName);
 
   void load();
 
@@ -18,7 +18,7 @@ public:
 
 private:
   std::string m_fileName;
-  GLenum m_textureTarget;
+  GLenum m_textureTarget = GL_TEXTURE_2D;
   GLuint m_textureObj;
   int m_imageWidth = 0;
   int m_imageHeight = 0;

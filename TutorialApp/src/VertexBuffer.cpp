@@ -1,10 +1,3 @@
-//
-//  VertexBuffer.cpp
-//  TutorialApp
-//
-//  Created by Adrian Mit - (p) on 06.07.2022.
-//
-
 #include <AttributeHelper.h>
 #include <OGL.h>
 #include <VertexBuffer.h>

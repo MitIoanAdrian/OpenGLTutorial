@@ -1,14 +1,4 @@
-//  Application.cpp
-//  TutorialApp
-//
-//  Created by Adrian Mit - (p) on 05.07.2022.
-//
-
 #include <Application.hpp>
-#include <ShadersProgram.h>
-#include <Texture.h>
-#include <VertexBuffer.h>
-#include <VertexLayout.h>
 #include <ogldev_math_3d.h>
 
 void Application::window_size_callback(GLFWwindow *window, int width,

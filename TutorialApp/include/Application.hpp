@@ -1,21 +1,8 @@
-//
-//  Application.hpp
-//  TutorialApp
-//
-//  Created by Adrian Mit - (p) on 05.07.2022.
-//
-
 #pragma once
 
-#include <Camera.h>
-#include <CameraController.h>
 #include <IndexBuffer.h>
-#include <ModelTrans.h>
+#include <OGL.h>
 #include <ResourceManager.h>
-#include <ShadersProgram.h>
-#include <Texture.h>
-#include <VertexBuffer.h>
-#include <VertexLayout.h>
 #include <ogldev_math_3d.h>
 
 // file: Application.h

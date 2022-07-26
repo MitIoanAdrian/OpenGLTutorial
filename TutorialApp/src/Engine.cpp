@@ -1,7 +1,9 @@
 #include <Application.hpp>
 #include <AttributeHelper.h>
 #include <Engine.h>
+#include <IndexBuffer.h>
 #include <OGL.h>
+#include <ResourceManager.h>
 #include <ShadersProgram.h>
 #include <Texture.h>
 #include <VertexLayout.h>
@@ -42,7 +44,7 @@ void Engine::initShader() {
 }
 
 void Engine::initTexture() {
-  m_Texture = getResourceManager().getTexture("bricks.jpeg", GL_TEXTURE_2D);
+  m_Texture = getResourceManager().getTexture("bricks.jpeg");
   m_Texture->load();
   m_Texture->bind(0);
 }
@@ -93,8 +95,8 @@ void Engine::render() {
   auto mvp = m_Camera.getProjectionMatrix() * m_Camera.getViewMatrix() *
              m_Model.GetMatrix();
 
-  m_Shaders->setUniformMat4(UniformHelper::UniformType::kMVP, mvp);
-  m_Shaders->setUniform1i(UniformHelper::UniformType::kTexture, 0);
+  m_Shaders->set_uniform(UniformHelper::UniformType::kMVP, mvp);
+  m_Shaders->set_uniform(UniformHelper::UniformType::kTexture, 0);
 
   m_Texture->bind(0);
   m_VertexBuffer->bind();

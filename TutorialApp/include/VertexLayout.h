@@ -1,5 +1,3 @@
-// vertex layout.
-
 #pragma once
 
 #include <AttributeHelper.h>

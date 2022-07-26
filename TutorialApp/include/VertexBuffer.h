@@ -1,10 +1,3 @@
-//
-//  VertexBuffer.h
-//  TutorialApp
-//
-//  Created by Adrian Mit - (p) on 06.07.2022.
-//
-
 #pragma once
 
 #include <VertexLayout.h>

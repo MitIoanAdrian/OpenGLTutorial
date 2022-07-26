@@ -3,6 +3,8 @@
 #include <ShadersProgram.h>
 #include <Texture.h>
 #include <memory>
+#include <unordered_map>
+#include <vector>
 
 ResourceManager::ResourceManager() {}
 
@@ -19,11 +21,11 @@ void ResourceManager::load_shaders(const std::string name,
   s = shader;
 }
 
-void ResourceManager::load_textures(const std::string name, GLenum type,
+void ResourceManager::load_textures(const std::string name,
                                     std::shared_ptr<Texture> &t) {
   auto path = m_Textures + name;
 
-  auto texture = std::make_shared<Texture>(type, path.c_str());
+  auto texture = std::make_shared<Texture>(path.c_str());
 
   texture->load();
 
@@ -33,6 +35,9 @@ void ResourceManager::load_textures(const std::string name, GLenum type,
 std::shared_ptr<ShadersProgram>
 ResourceManager::createShader(const std::string shader_name) {
 
+  // if(m_ShaderMap.count(shader_name))
+  //   return m_ShaderMap[shader_name];
+
   std::shared_ptr<ShadersProgram> s;
 
   load_shaders(shader_name, s);
@@ -41,11 +46,14 @@ ResourceManager::createShader(const std::string shader_name) {
 }
 
 std::shared_ptr<Texture>
-ResourceManager::getTexture(const std::string texture_name, GLenum type) {
+ResourceManager::getTexture(const std::string texture_name) {
+
+  // if(m_TexMap.count(texture_name))
+  //    return m_TexMap[texture_name];
 
   std::shared_ptr<Texture> t;
 
-  load_textures(texture_name, type, t);
+  load_textures(texture_name, t);
 
   return t;
 }

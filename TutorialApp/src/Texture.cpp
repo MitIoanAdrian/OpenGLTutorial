@@ -2,10 +2,7 @@
 #include <iostream>
 #include <stb_image.h>
 
-Texture::Texture(GLenum TextureTarget, const std::string &FileName) {
-  m_textureTarget = TextureTarget;
-  m_fileName = FileName;
-}
+Texture::Texture(const std::string &FileName) { m_fileName = FileName; }
 
 void Texture::load() {
   stbi_set_flip_vertically_on_load(1);

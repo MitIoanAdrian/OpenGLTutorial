@@ -86,17 +86,28 @@ ShadersProgram::getUniformName(const std::size_t uniform_index) const {
   return getUniformName(uniform_index);
 }
 
-void ShadersProgram::setUniform1i(UniformHelper::UniformType u, int v) {
+void ShadersProgram::set_uniform(UniformHelper::UniformType u, int v) {
   glUniform1i(m_uniformLocations[std::size_t(u)], v);
 }
 
-void ShadersProgram::setUniformVec2(UniformHelper::UniformType u,
-                                    const Vector2f &Offset) {
+void ShadersProgram::set_uniform(UniformHelper::UniformType u,
+                                 const Vector2f &Offset) {
   glUniform2f(m_uniformLocations[std::size_t(u)], Offset.x, Offset.y);
 }
 
-void ShadersProgram::setUniformMat4(UniformHelper::UniformType u,
-                                    const Matrix4f &Matrix) {
+void ShadersProgram::set_uniform(UniformHelper::UniformType u,
+                                 const Vector3f &Offset) {
+  glUniform3f(m_uniformLocations[std::size_t(u)], Offset.x, Offset.y, Offset.z);
+}
+
+void ShadersProgram::set_uniform(UniformHelper::UniformType u,
+                                 const Matrix3f &Matrix) {
+  glUniformMatrix3fv(m_uniformLocations[std::size_t(u)], 1, GL_TRUE,
+                     &Matrix.m[0][0]);
+}
+
+void ShadersProgram::set_uniform(UniformHelper::UniformType u,
+                                 const Matrix4f &Matrix) {
 
   glUniformMatrix4fv(m_uniformLocations[std::size_t(u)], 1, GL_TRUE,
                      &Matrix.m[0][0]);

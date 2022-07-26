@@ -5,6 +5,8 @@
 #include <Texture.h>
 #include <memory>
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 class ResourceManager {
 public:
@@ -12,8 +14,7 @@ public:
 
   std::shared_ptr<ShadersProgram> createShader(const std::string shaderName);
 
-  std::shared_ptr<Texture> getTexture(const std::string textureName,
-                                      GLenum type);
+  std::shared_ptr<Texture> getTexture(const std::string textureName);
 
 private:
   static inline std::string m_Shaders =
@@ -27,6 +28,9 @@ private:
   void load_shaders(const std::string shader_file,
                     std::shared_ptr<ShadersProgram> &);
 
-  void load_textures(const std::string texture_file, GLenum target,
+  void load_textures(const std::string texture_file,
                      std::shared_ptr<Texture> &);
+
+  std::unordered_map<std::string, std::shared_ptr<Texture>> m_TexMap;
+  std::unordered_map<std::string, std::shared_ptr<ShadersProgram>> m_ShaderMap;
 };
