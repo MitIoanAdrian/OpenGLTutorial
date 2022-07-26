@@ -35,25 +35,27 @@ void ResourceManager::load_textures(const std::string name,
 std::shared_ptr<ShadersProgram>
 ResourceManager::createShader(const std::string shader_name) {
 
-  // if(m_ShaderMap.count(shader_name))
-  //   return m_ShaderMap[shader_name];
+  if (m_ShaderMap.count(shader_name))
+    return m_ShaderMap[shader_name];
 
   std::shared_ptr<ShadersProgram> s;
 
   load_shaders(shader_name, s);
 
+  m_ShaderMap.insert(std::make_pair(shader_name, s));
   return s;
 }
 
 std::shared_ptr<Texture>
 ResourceManager::getTexture(const std::string texture_name) {
 
-  // if(m_TexMap.count(texture_name))
-  //    return m_TexMap[texture_name];
+  if (m_TexMap.count(texture_name))
+    return m_TexMap[texture_name];
 
   std::shared_ptr<Texture> t;
 
   load_textures(texture_name, t);
 
+  m_TexMap.insert(std::make_pair(texture_name, t));
   return t;
 }
