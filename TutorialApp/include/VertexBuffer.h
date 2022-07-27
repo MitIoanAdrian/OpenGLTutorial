@@ -12,6 +12,7 @@ public:
 
 public:
   void bind() const;
+  void unbind() const;
 
 public:
   void create(const void *data, const VertexLayout &vertex_layout,

@@ -48,6 +48,8 @@ void VertexBuffer::create(const void *data, const VertexLayout &vertex_layout,
     glDisableVertexAttribArray(AttributeHelper::getAttributeType(v.type));
 }
 
+void VertexBuffer::unbind() const { glBindVertexArray(0); }
+
 VertexBuffer::~VertexBuffer() {
 
   glDeleteVertexArrays(1, &m_VAO);

@@ -86,6 +86,10 @@ ShadersProgram::getUniformName(const std::size_t uniform_index) const {
   return getUniformName(uniform_index);
 }
 
+void ShadersProgram::set_uniform(UniformHelper::UniformType u, float v) {
+  glUniform1f(m_uniformLocations[std::size_t(u)], v);
+}
+
 void ShadersProgram::set_uniform(UniformHelper::UniformType u, int v) {
   glUniform1i(m_uniformLocations[std::size_t(u)], v);
 }

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <stb_image.h>
 
+std::hash<std::string> Texture::m_HashObj;
+
 Texture::Texture(const std::string &FileName) { m_fileName = FileName; }
 
 void Texture::load() {
@@ -26,7 +28,11 @@ void Texture::load() {
   glTexParameterf(m_textureTarget, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
   glBindTexture(m_textureTarget, 0);
+
+  m_Hash = m_HashObj(m_fileName);
 }
+
+const uint64_t &Texture::get_hash() const { return m_Hash; }
 
 void Texture::bind(int tslot) {
   glActiveTexture(GL_TEXTURE0 + tslot);

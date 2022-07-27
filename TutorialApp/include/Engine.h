@@ -5,6 +5,7 @@
 #include <CameraController.h>
 #include <ModelTrans.h>
 #include <OGL.h>
+#include <RenderingQueue.h>
 #include <ResourceManager.h>
 #include <ShadersProgram.h>
 #include <Texture.h>
@@ -20,6 +21,8 @@ private:
   Camera m_Camera;
   ModelTrans m_Model;
   CameraController m_Control;
+
+  RenderingQueue m_RenderQueue;
 
   std::shared_ptr<VertexBuffer> m_VertexBuffer;
   std::shared_ptr<VertexLayout> m_VertexLayout;

@@ -25,6 +25,12 @@ add_executable(
 	include/Texture.h
 	include/ResourceManager.h
 	include/Engine.h
+	include/Pool.h
+	include/RenderingQueue.h
+	include/RenderPacket.h
+	include/ResourceManager.h
+	include/TextureList.h
+	include/UniformList.h
 	src/main.cpp
 	src/Application.cpp
 	src/VertexLayout.cpp
@@ -41,6 +47,10 @@ add_executable(
 	src/Texture.cpp
 	src/ResourceManager.cpp
 	src/Engine.cpp
+	src/RenderingQueue.cpp
+	src/RenderPacket.cpp
+	src/TextureList.cpp
+	src/UniformList.cpp
 	shaders/shader.vs
 	shaders/shader.fs
 	textures/bricks.jpeg

@@ -3,6 +3,7 @@
 #include <Engine.h>
 #include <IndexBuffer.h>
 #include <OGL.h>
+#include <RenderPacket.h>
 #include <ResourceManager.h>
 #include <ShadersProgram.h>
 #include <Texture.h>
@@ -94,17 +95,24 @@ void Engine::render() {
   m_Camera.updateCamera();
   auto mvp = m_Camera.getProjectionMatrix() * m_Camera.getViewMatrix() *
              m_Model.GetMatrix();
+  auto *wvp = m_RenderQueue.create_uniform(
+      nullptr, UniformHelper::UniformType::kMVP, mvp);
 
-  m_Shaders->set_uniform(UniformHelper::UniformType::kMVP, mvp);
-  m_Shaders->set_uniform(UniformHelper::UniformType::kTexture, 0);
+  auto *text = m_RenderQueue.create_texture(
+      nullptr, m_Texture.get(), UniformHelper::UniformType::kTexture);
 
-  m_Texture->bind(0);
-  m_VertexBuffer->bind();
-  m_IndexBuffer->bind();
+  RenderPacket packet;
+  packet.vbuff = m_VertexBuffer.get();
+  packet.ibuff = m_IndexBuffer.get();
+  packet.shader = m_Shaders.get();
+  packet.topology = GL_TRIANGLES;
+  packet.primitive_start = 0;
+  packet.primitive_end = m_IndexBuffer->getSize() / 3;
+  packet.first_texture = text;
+  packet.first_uniform = wvp;
 
-  glEnable(GL_CULL_FACE);
-  glCullFace(GL_BACK);
-  glFrontFace(GL_CW);
+  m_RenderQueue.push_rendering_packet(packet);
 
-  glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+  m_RenderQueue.draw_all();
+  m_RenderQueue.clear();
 }
