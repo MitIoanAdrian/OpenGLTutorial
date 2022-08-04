@@ -31,6 +31,9 @@ add_executable(
 	include/ResourceManager.h
 	include/TextureList.h
 	include/UniformList.h
+	include/Terrain.h
+	include/HeightMap.h
+	include/StbHelper.h
 	src/main.cpp
 	src/Application.cpp
 	src/VertexLayout.cpp
@@ -51,6 +54,9 @@ add_executable(
 	src/RenderPacket.cpp
 	src/TextureList.cpp
 	src/UniformList.cpp
+	src/Terrain.cpp
+	src/HeightMap.cpp
+	src/StbHelper.cpp
 	shaders/shader.vs
 	shaders/shader.fs
 	textures/bricks.jpeg

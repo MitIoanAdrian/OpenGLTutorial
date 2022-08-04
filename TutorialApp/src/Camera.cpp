@@ -3,28 +3,47 @@
 #include <ogldev_math_3d.h>
 
 Camera::Camera() {
-  m_pos = Vector3f(3.0f, 3.0f, 2.0f);
-  m_target = Vector3f(0.0f, 0.0f, 0.0f);
-  m_up = Vector3f(0.0f, 1.0f, 0.0f);
+  m_up = Vector3f(0.0f, 0.0f, 1.0f);
+    m_pitch = 0.0f;
+    m_yaw = 0.0f;
 }
 
 void Camera::LookAt(float x, float y, float z) {
-  m_target.x = x;
-  m_target.y = y;
-  m_target.z = z;
+  m_LookAt.x = x;
+  m_LookAt.y = y;
+  m_LookAt.z = z;
 }
 
-void Camera::Move(Vector3f distance) { m_pos += distance; }
+void Camera::onYaw(float rad){
+    m_yaw += rad;
+}
+
+
+void Camera::onPitch(float rad){
+    const float half_pi = 89.0f;
+    m_pitch = rad;
+    
+    if (m_pitch > half_pi)
+        m_pitch = half_pi;
+    
+    if (m_pitch < -half_pi)
+        m_pitch = -half_pi;
+}
 
 void Camera::updateCamera() {
-  m_View.InitCameraTransform(m_pos, m_target, m_up);
+    Vector3f dir{ 1.0f, 0.0f, 0.0f};
+    
+    dir.Rotate(m_pitch, (0.0f, 1.0f, 0.0f));
+    dir.Rotate(m_yaw, (0.0f, 0.0f, 1.0f));
+    m_View.InitCameraTransform(m_LookAt + dir * m_Distance, m_LookAt, m_up);
+    //m_View.InitCameraTransform(Vector3f{ 0.0f, 0.0f, 10.0f }, m_LookAt, m_up);
 }
 
 const Matrix4f &Camera::getViewMatrix() const { return m_View; }
 
-const Vector3f &Camera::getTarget() const { return m_target; }
+const Vector3f &Camera::getLookAt() const { return m_LookAt; }
 
-const Vector3f &Camera::getPosition() const { return m_pos; }
+const float &Camera::getYaw() const { return m_yaw; }
 
 void Camera::setProjection(float height, float width) {
 

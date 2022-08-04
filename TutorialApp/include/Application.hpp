@@ -19,6 +19,8 @@ private:
 
   int m_Width = 0;
   int m_Height = 0;
+    int m_mouseX = 0;
+    int m_mouseY = 0;
 
   ResourceManager m_ResourceManager;
 
@@ -26,6 +28,8 @@ private:
                            int action, int mods);
 
   static void window_size_callback(GLFWwindow *window, int with, int height);
+    
+    static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
 protected:
   bool init_window(const char *window_name, std::size_t width,
@@ -40,6 +44,8 @@ protected:
   int getHeight() const;
 
   int on_key(int key);
+    
+    virtual void cursor_callback(Application *App, double xpos, double ypos){};
 
   virtual void key_callback(Application *App, int key) {}
 

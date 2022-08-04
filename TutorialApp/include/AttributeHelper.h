@@ -6,6 +6,7 @@ struct AttributeHelper {
     kPosition = 0,
     kColor,
     kUV,
+    kNormal,
     kAttributeCount
 
   };

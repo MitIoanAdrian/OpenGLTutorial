@@ -2,42 +2,55 @@
 #include <OGL.h>
 #include <ogldev_math_3d.h>
 
-Vector3f CameraController::moveCamera(int key, Vector3f camera_pos,
-                                      Vector3f camera_target) {
+
+Vector3f CameraController::moveCamera(int key, Vector3f LookAt, float yaw) {
   Vector3f distance = Vector3f(0.0f, 0.0f, 0.0f);
-  Vector3f totarget = camera_target - camera_pos;
+
 
   switch (key) {
   case GLFW_KEY_UP: // move towards target
-    distance += totarget.Normalize();
+      {
+          Vector3f dir {1.0f, 0.0f, 0.0f};
+          dir.Rotate(yaw,(0.0f,0.0f,1.0f));
+          LookAt = LookAt - dir;
+      }
     break;
 
   case GLFW_KEY_DOWN: // move away from target
-    distance -= totarget.Normalize();
+      {
+          Vector3f dir {1.0f, 0.0f, 0.0f};
+          dir.Rotate(yaw,(0.0f,0.0f,1.0f));
+          LookAt = LookAt + dir;
+      }
     break;
 
   case GLFW_KEY_W: // raise camera while looking at target
-    distance = Vector3f(0.0f, 1.0f, 0.0f);
+          LookAt.z += 1;
     break;
 
   case GLFW_KEY_S: // lower camera while looking at target
-    distance = Vector3f(0.0f, -1.0f, 0.0f);
+          LookAt.z -= 1;
     break;
 
   case GLFW_KEY_LEFT: {
-    Vector3f Left = totarget.Cross(Vector3f(0.0f, 1.0f, 0.0f));
-    Left.Normalize();
-    distance += Left;
+      Vector3f dir{ 0.0f, 1.0f, 0.0f };
+
+         dir.Rotate(yaw,(0.0f, 0.0f, 1.0f));
+
+         LookAt = LookAt + dir;
   } break;
 
-  case GLFW_KEY_RIGHT: // left and right are easier to observe if model rotate
-                       // is disabled in //   application
+  case GLFW_KEY_RIGHT:
   {
-    Vector3f Right = Vector3f(0.0f, 1.0f, 0.0f).Cross(totarget);
-    Right.Normalize();
-    distance += Right;
+      Vector3f dir{ 0.0f, 1.0f, 0.0f };
+
+         dir.Rotate(yaw, (0.0f,0.0f,1.0f));
+
+         LookAt = LookAt - dir;
   } break;
   }
 
-  return distance;
+  return LookAt;
 }
+
+

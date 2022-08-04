@@ -12,21 +12,25 @@ public:
 
 public:
   void setProjection(float height, float width);
+    void onYaw(float rad);
+    void onPitch(float rad);
   void updateCamera();
   const void setViewMatrix();
-
-  const Vector3f &getPosition() const;
-  const Vector3f &getTarget() const;
-
+    
+    
+  const Vector3f &getLookAt() const;
+    const float &getYaw() const;
   const Matrix4f &getProjectionMatrix() const;
   const Matrix4f &getViewMatrix() const;
 
 private:
-  Vector3f m_pos;
-  Vector3f m_target;
+    Vector3f m_LookAt;
   Vector3f m_up;
+    float m_yaw;
+    float m_pitch;
+    float m_Distance = 1.0f;
   float m_near = 1.0f;
-  float m_far = 1000.0f;
+  float m_far = 10000.0f;
   float m_fov = 90.0f;
 
 protected:
