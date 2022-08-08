@@ -32,7 +32,7 @@ AttributeHelper::getAttributeType(const char *attribute_name) {
     return AttributeHelper::AttributeType::kPosition;
   if (strcmp(attribute_name, "UV") == 0)
     return AttributeHelper::AttributeType::kUV;
-  if(strcmp(attribute_name, "Normal") == 0)
+  if (strcmp(attribute_name, "Normal") == 0)
     return AttributeHelper::AttributeType::kNormal;
   return AttributeHelper::AttributeType::kAttributeCount;
 }

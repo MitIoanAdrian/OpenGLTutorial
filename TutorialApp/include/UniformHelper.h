@@ -9,7 +9,7 @@ struct UniformHelper {
     kTexture2,
     kTexture3,
     kTexture4,
-    kSplatMapTexture, 
+    kSplatMapTexture,
     kUniformCount
 
   };

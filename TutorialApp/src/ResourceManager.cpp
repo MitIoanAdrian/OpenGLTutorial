@@ -1,3 +1,4 @@
+#include <HeightMap.h>
 #include <OGL.h>
 #include <ResourceManager.h>
 #include <ShadersProgram.h>
@@ -5,9 +6,8 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
-#include <HeightMap.h>
 
-//make strings references
+// make strings references
 
 ResourceManager::ResourceManager() {}
 
@@ -35,15 +35,15 @@ void ResourceManager::load_textures(const std::string name,
   t = texture;
 }
 
-void ResourceManager::load_heightmap(const std::string name, std::shared_ptr<HeightMap> &h){
-    auto path = m_HeightMapPath + name;
-    
-    auto hmap = std::make_shared<HeightMap>();
-    
-    hmap->load(path.c_str());
-    
-    h = hmap;
-    
+void ResourceManager::load_heightmap(const std::string name,
+                                     std::shared_ptr<HeightMap> &h) {
+  auto path = m_HeightMapPath + name;
+
+  auto hmap = std::make_shared<HeightMap>();
+
+  hmap->load(path.c_str());
+
+  h = hmap;
 }
 
 std::shared_ptr<ShadersProgram>
@@ -75,14 +75,14 @@ ResourceManager::getTexture(const std::string texture_name) {
 }
 
 std::shared_ptr<HeightMap>
-ResourceManager::getHeightMap(const std::string heightmap_file){
-    if(m_HeightMap.count(heightmap_file))
-        return m_HeightMap[heightmap_file];
-    
-    std::shared_ptr<HeightMap> h;
-    load_heightmap(heightmap_file, h);
-    
-    m_HeightMap.insert(std::make_pair(heightmap_file, h));
-    
-    return h;
+ResourceManager::getHeightMap(const std::string heightmap_file) {
+  if (m_HeightMap.count(heightmap_file))
+    return m_HeightMap[heightmap_file];
+
+  std::shared_ptr<HeightMap> h;
+  load_heightmap(heightmap_file, h);
+
+  m_HeightMap.insert(std::make_pair(heightmap_file, h));
+
+  return h;
 }

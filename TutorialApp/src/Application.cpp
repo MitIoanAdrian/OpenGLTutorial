@@ -10,12 +10,12 @@ void Application::window_size_callback(GLFWwindow *window, int width,
   handler->window_callback(handler, width, height);
 }
 
+void Application::cursor_position_callback(GLFWwindow *window, double xpos,
+                                           double ypos) {
+  Application *handler =
+      reinterpret_cast<Application *>(glfwGetWindowUserPointer(window));
 
-void Application::cursor_position_callback(GLFWwindow *window, double xpos, double ypos){
-    Application *handler =reinterpret_cast<Application *>(glfwGetWindowUserPointer(window));
-    
-    handler->cursor_callback(handler, xpos, ypos);
-
+  handler->cursor_callback(handler, xpos, ypos);
 }
 
 bool Application::init_window(const char *window_name, std::size_t width,
@@ -45,7 +45,7 @@ bool Application::init_window(const char *window_name, std::size_t width,
   glfwSetKeyCallback(m_Window, Application::key_callback);
   glfwSetWindowUserPointer(m_Window, this);
   glfwSetWindowSizeCallback(m_Window, window_size_callback);
-    glfwSetCursorPosCallback(m_Window, cursor_position_callback);
+  glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 
   return true;
 }
@@ -70,8 +70,6 @@ void Application::run() {
     glfwPollEvents();
   }
 }
-
-
 
 void Application::key_callback(GLFWwindow *window, int key, int scancode,
                                int action, int mods) {

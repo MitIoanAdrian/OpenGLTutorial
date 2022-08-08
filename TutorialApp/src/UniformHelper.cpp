@@ -44,15 +44,15 @@ UniformHelper::getUniformType(const char *uniform_name) {
     return UniformHelper::UniformType::kMVP;
   if (strcmp(uniform_name, "Texture0") == 0)
     return UniformHelper::UniformType::kTexture0;
-  if(strcmp(uniform_name, "Texture1")==0)
+  if (strcmp(uniform_name, "Texture1") == 0)
     return UniformHelper::UniformType::kTexture1;
-  if(strcmp(uniform_name, "Texture2")==0)
+  if (strcmp(uniform_name, "Texture2") == 0)
     return UniformHelper::UniformType::kTexture2;
-  if(strcmp(uniform_name, "Texture3")==0)
+  if (strcmp(uniform_name, "Texture3") == 0)
     return UniformHelper::UniformType::kTexture3;
-  if(strcmp(uniform_name, "Texture4")==0)
+  if (strcmp(uniform_name, "Texture4") == 0)
     return UniformHelper::UniformType::kTexture4;
-  if(strcmp(uniform_name, "SplatMapTexture")==0)
+  if (strcmp(uniform_name, "SplatMapTexture") == 0)
     return UniformHelper::UniformType::kSplatMapTexture;
   return UniformHelper::UniformType::kUniformCount;
 }

@@ -3,35 +3,28 @@
 #include <ShadersProgram.h>
 #include <fstream>
 
-bool BlendingState::equals(const BlendingState& cmp) const
-{
-    return
-        enabled == cmp.enabled &&
-        source_func == cmp.source_func &&
-        dest_func == cmp.dest_func;
+bool BlendingState::equals(const BlendingState &cmp) const {
+  return enabled == cmp.enabled && source_func == cmp.source_func &&
+         dest_func == cmp.dest_func;
 }
 
-bool BlendingState::operator==(const BlendingState& other) const
-{
-    return this->equals(other);
+bool BlendingState::operator==(const BlendingState &other) const {
+  return this->equals(other);
 }
 
-bool BlendingState::operator!=(const BlendingState& other) const
-{
-    return !this->equals(other);
+bool BlendingState::operator!=(const BlendingState &other) const {
+  return !this->equals(other);
 }
 
-bool BlendingState::operator<(const BlendingState& other) const
-{
-    if (enabled != other.enabled)
-        return enabled < other.enabled;
+bool BlendingState::operator<(const BlendingState &other) const {
+  if (enabled != other.enabled)
+    return enabled < other.enabled;
 
-    if (source_func != other.source_func)
-        return source_func < other.source_func;
+  if (source_func != other.source_func)
+    return source_func < other.source_func;
 
-    return dest_func < other.dest_func;
+  return dest_func < other.dest_func;
 }
-
 
 ShadersProgram::ShadersProgram(){};
 

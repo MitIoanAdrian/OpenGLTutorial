@@ -1,19 +1,18 @@
 #include <Application.hpp>
 #include <AttributeHelper.h>
 #include <Engine.h>
+#include <HeightMap.h>
 #include <IndexBuffer.h>
 #include <OGL.h>
 #include <RenderPacket.h>
 #include <ResourceManager.h>
 #include <ShadersProgram.h>
+#include <Terrain.h>
 #include <Texture.h>
 #include <VertexLayout.h>
 #include <iostream>
 #include <memory>
 #include <vector>
-#include <HeightMap.h>
-#include <Terrain.h>
-
 
 /*void Engine::initBuffer() {
 
@@ -54,17 +53,18 @@ void Engine::initTexture() {
 }
  */
 
-void Engine::initTerrain(){
-    m_HeightMap = getResourceManager().getHeightMap("heightmap.tga");
-    
-    m_Terrain = std::make_shared<Terrain>();
-    m_Terrain->initResources(&getResourceManager());
-    m_Terrain->loadHeightMap(m_HeightMap);
-    m_Terrain->generate();
+void Engine::initTerrain() {
+  m_HeightMap = getResourceManager().getHeightMap("heightmap.tga");
+
+  m_Terrain = std::make_shared<Terrain>();
+  m_Terrain->initResources(&getResourceManager());
+  m_Terrain->loadHeightMap(m_HeightMap);
+  m_Terrain->generate();
 }
 
-void Engine::initCamera() { m_Camera.setProjection(getHeight(), getWidth());
-    m_Camera.LookAt(0.0f, 0.0f, 10.0f);
+void Engine::initCamera() {
+  m_Camera.setProjection(getHeight(), getWidth());
+  m_Camera.LookAt(0.0f, 0.0f, 10.0f);
 }
 
 void Engine::initModel() { m_Model.setPosition(0.0f, 0.0f, 0.0f); }
@@ -74,15 +74,15 @@ bool Engine::initialize(const char *window_name, std::size_t width,
   if (!init_window(window_name, width, height))
     return false;
 
-  //initBuffer();
-  //initShader();
+  // initBuffer();
+  // initShader();
   initCamera();
   initModel();
   initTerrain();
-  //initTexture();
-    
-    m_Mouse.x = 0.0f;
-    m_Mouse.y = 0.0f;
+  // initTexture();
+
+  m_Mouse.x = 0.0f;
+  m_Mouse.y = 0.0f;
 
   return true;
 }
@@ -94,37 +94,32 @@ void Engine::window_callback(Application *App, int Width, int Height) {
 
 void Engine::key_callback(Application *App, int key) {
   Engine *handler = reinterpret_cast<Engine *>(App);
-    Vector3f new_look_at;
-    new_look_at = handler->m_Control.moveCamera(key, m_Camera.getLookAt(), m_Camera.getYaw());
-    m_Camera.LookAt(new_look_at.x, new_look_at.y, new_look_at.z);
+  Vector3f new_look_at;
+  new_look_at = handler->m_Control.moveCamera(key, m_Camera.getLookAt(),
+                                              m_Camera.getYaw());
+  m_Camera.LookAt(new_look_at.x, new_look_at.y, new_look_at.z);
 }
 
+void Engine::cursor_callback(Application *App, double xpos, double ypos) {
+  Engine *handler = reinterpret_cast<Engine *>(App);
+  float x = (float)xpos;
+  float y = (float)ypos;
 
-void Engine::cursor_callback(Application *App, double xpos, double ypos){
-    Engine *handler = reinterpret_cast<Engine *>(App);
-    float x = (float)xpos;
-    float y = (float)ypos;
-    
-    float mouse_deltax = x - m_Mouse.x;
-    float mouse_deltay = y - m_Mouse.y;
-    
-    const float yaw_diff = mouse_deltax;
-    const float pitch_diff = mouse_deltay;
-    
-    m_Mouse.x = x;
-    m_Mouse.y = y;
-    
-    if(yaw_diff != 0 )
-       m_Camera.onYaw(yaw_diff);
-    
-    if(pitch_diff != 0)
-        m_Camera.onPitch(pitch_diff);
-    
-    
+  float mouse_deltax = x - m_Mouse.x;
+  float mouse_deltay = y - m_Mouse.y;
+
+  const float yaw_diff = mouse_deltax;
+  const float pitch_diff = mouse_deltay;
+
+  m_Mouse.x = x;
+  m_Mouse.y = y;
+
+  if (yaw_diff != 0)
+    m_Camera.onYaw(yaw_diff);
+
+  if (pitch_diff != 0)
+    m_Camera.onPitch(pitch_diff);
 }
-
-
-
 
 void Engine::update(const float delta_seconds) {}
 
@@ -135,24 +130,21 @@ void Engine::render() {
   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  //m_Model.Rotate(0.0f, 1.0f, 0.0f);
+  // m_Model.Rotate(0.0f, 1.0f, 0.0f);
 
-  //m_Shaders->bind();
+  // m_Shaders->bind();
 
   m_Camera.updateCamera();
   auto mvp = m_Camera.getProjectionMatrix() * m_Camera.getViewMatrix() *
              m_Model.GetMatrix();
   auto *wvp = m_RenderQueue.create_uniform(
       nullptr, UniformHelper::UniformType::kMVP, mvp);
-    
-    auto packets = m_Terrain->getPackets(&m_RenderQueue, wvp);
 
-    for(auto& packet: packets){
-        m_RenderQueue.push_rendering_packet(packet);
-        
-    }
+  auto packets = m_Terrain->getPackets(&m_RenderQueue, wvp);
 
-  
+  for (auto &packet : packets) {
+    m_RenderQueue.push_rendering_packet(packet);
+  }
 
   m_RenderQueue.draw_all();
   m_RenderQueue.clear();
