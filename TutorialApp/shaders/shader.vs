@@ -6,8 +6,6 @@ in vec2 UV;
 uniform mat4 MVP;
 
 out vec2 TexCoords;
-
-
 void main()
 {
     gl_Position = MVP * vec4(Position, 1.0);

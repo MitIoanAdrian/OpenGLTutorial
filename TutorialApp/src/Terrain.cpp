@@ -19,16 +19,37 @@ Terrain::Terrain(){
 	m_vLay->AddVertexAttribute(AttributeHelper::AttributeType::kPosition, 3);
 	m_vLay->AddVertexAttribute(AttributeHelper::AttributeType::kUV, 2);
 	m_vLay->AddVertexAttribute(AttributeHelper::AttributeType::kNormal, 3);
+
+	m_WaterVerBuff = std::make_shared<VertexBuffer>();
+	m_WaterIndBuff = std::make_shared<IndexBuffer>();
+	m_WaterLayout = std::make_shared<VertexLayout>();
+
+	m_WaterLayout->AddVertexAttribute(AttributeHelper::AttributeType::kPosition, 2);
 }
 
 void Terrain::initResources(ResourceManager* resource_manager){
-	m_Texture = resource_manager->getTexture("soil.jpeg");
+    m_GrassTex = resource_manager->getTexture("grass.jpeg");
+    m_Rock1Tex = resource_manager->getTexture("rock1.jpeg");
+    m_Rock2Tex = resource_manager->getTexture("rock2.jpeg");
+    m_SnowTex = resource_manager->getTexture("snow.jpeg");
+    
+    m_SplatMap = resource_manager->getTexture("splatmap.tga");
+    
 	m_TerrainShader = resource_manager->createShader("terrain_shader");
+	m_WaterShader = resource_manager->createShader("water_shader");
+
+	BlendingState water_blending;
+	water_blending.enabled = true;
+	water_blending.source_func = BlendingFunc::SRC_ALPHA;
+	water_blending.dest_func = BlendingFunc::ONE_MINUS_SRC_ALPHA;
+
+	m_WaterShader->setBlendingState(water_blending);
 }
 
 
 void Terrain::generate(){
 	generateTerrain();
+	generateWater();
 }
 
 void Terrain::loadHeightMap(std::shared_ptr<HeightMap> height_map){
@@ -99,11 +120,34 @@ void Terrain::generateTerrain(){
 	m_iBuff->create(*m_vBuff, indices.data(), indices.size());
 }
 
+void Terrain::generateWater(){
+	float width = m_Width * m_Step;
+	float height = m_Height * m_Step;
+
+	float vertices[] = {
+		0.0f, 0.0f,
+		0.0f, (float)height,
+		(float)width, 0.0f,
+		(float)width, (float)height
+    };
+
+	uint32_t indices[] = {
+		0, 1, 2,
+		1, 2, 3
+	};
+
+	m_WaterVerBuff->create(vertices, *m_WaterLayout, 4);
+	m_WaterIndBuff->create(*m_WaterVerBuff, indices, 6);
+}
+
 RenderPacket Terrain::createTerrainPacket(RenderingQueue* render_queue, IUniformNode* uniforms){
 	std::size_t topology_size = 3;
 
-    auto* tex = render_queue->create_texture(nullptr, m_Texture.get(),
-                        UniformHelper::UniformType::kTexture);
+    auto* tex = render_queue->create_texture(nullptr, m_GrassTex.get(), UniformHelper::UniformType::kTexture0);
+    	tex = render_queue->create_texture(tex, m_Rock1Tex.get(), UniformHelper::UniformType::kTexture1);
+        tex = render_queue->create_texture(tex, m_Rock2Tex.get(), UniformHelper::UniformType::kTexture2);
+       tex = render_queue->create_texture(tex, m_SnowTex.get(), UniformHelper::UniformType::kTexture3);
+        tex = render_queue->create_texture(tex, m_SplatMap.get(), UniformHelper::UniformType::kSplatMapTexture);
 
 	RenderPacket packet;
 	packet.vbuff = m_vBuff.get();
@@ -118,13 +162,32 @@ RenderPacket Terrain::createTerrainPacket(RenderingQueue* render_queue, IUniform
 	return packet;
 }
 
+RenderPacket Terrain::createWaterPacket(RenderingQueue* render_queue, IUniformNode* uniforms){
+	std:;size_t topology_size = 3;
+
+	RenderPacket packet;
+	packet.vbuff = m_WaterVerBuff.get();
+	packet.ibuff = m_WaterIndBuff.get();
+	packet.shader = m_WaterShader.get();
+	packet.topology = GL_TRIANGLES;
+	packet.primitive_start = 0;
+	packet.primitive_end = m_WaterIndBuff->getSize()/topology_size;
+	packet.first_texture = nullptr;
+	packet.first_uniform = uniforms;
+
+	return packet;
+
+}
+
 
 std::vector<RenderPacket> Terrain::getPackets(RenderingQueue* render_queue, IUniformNode* uniforms){
 	std::vector<RenderPacket> packets;
 
 	auto terrain_packet = createTerrainPacket(render_queue, uniforms);
+    auto water_packet = createWaterPacket(render_queue, uniforms);
 
 	packets.push_back(terrain_packet);
+	packets.push_back(water_packet);
 
 	return packets;
 }

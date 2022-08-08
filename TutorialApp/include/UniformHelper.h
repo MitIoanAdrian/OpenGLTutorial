@@ -4,7 +4,12 @@ struct UniformHelper {
   enum UniformType {
     kOffset = 0,
     kMVP,
-    kTexture,
+    kTexture0,
+    kTexture1,
+    kTexture2,
+    kTexture3,
+    kTexture4,
+    kSplatMapTexture, 
     kUniformCount
 
   };

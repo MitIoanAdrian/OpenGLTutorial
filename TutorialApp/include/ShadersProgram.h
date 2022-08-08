@@ -5,6 +5,43 @@
 #include <array>
 #include <iostream>
 #include <ogldev_math_3d.h>
+#include <vector>
+#include <string>
+#include <set>
+#include <functional>
+
+enum class BlendingFunc{
+  NONE = 0,
+
+  src_COLOR,
+  ONE_MINUS_SRC_COLOR,
+  DST_COLOR,
+  ONE_MINUS_DST_COLOR,
+  SRC_ALPHA,
+  ONE_MINUS_SRC_ALPHA,
+  DST_ALPHA,
+  ONE_MINUS_DST_ALPHA,
+  CONSTANT_COLOR,
+  ONE_MINUS_CONSTANT_COLOR,
+  CONSTANT_ALPHA,
+  ONE_MINUS_CONSTANT_ALPHA,
+
+  Count
+};
+
+struct BlendingState{
+  bool enabled = false;
+
+  BlendingFunc source_func = BlendingFunc::NONE;
+  BlendingFunc dest_func = BlendingFunc::NONE;
+
+  bool equals(const BlendingState& cmp) const;
+
+  bool operator==(const BlendingState& other) const;
+  bool operator!=(const BlendingState& other) const;
+  bool operator<(const BlendingState& other) const;
+};
+
 
 class ShadersProgram {
 public:
@@ -30,10 +67,14 @@ public:
   const char *getUniformName(const std::size_t uniform_index) const;
 
   void bind(); // or glUseProgram
+    inline void setBlendingState(BlendingState& blend) { m_BlendingState = blend;}
+    inline const BlendingState& getBlendingState() {return m_BlendingState; }
 
 private:
   void addShader(const char *pShaderText, GLenum ShaderType);
   void link();
+    
+    BlendingState m_BlendingState;
 
   GLuint m_Shader_Program;
   // GLint m_uOffsetLocation;
