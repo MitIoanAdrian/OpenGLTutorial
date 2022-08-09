@@ -12,7 +12,7 @@
 #include <iostream>
 #include <memory>
 #include <ogldev_math_3d.h>
-
+class Camera;
 class Terrain {
 private:
   std::shared_ptr<VertexLayout> m_vLay;
@@ -41,10 +41,8 @@ private:
   void generateTerrain();
   void generateWater();
 
-  RenderPacket createTerrainPacket(RenderingQueue *render_queue,
-                                   IUniformNode *uniforms);
-  RenderPacket createWaterPacket(RenderingQueue *render_queue,
-                                 IUniformNode *uniforms);
+  void createTerrainPacket(RenderingQueue *render_queue, const Matrix4f &mvp);
+  void createWaterPacket(RenderingQueue *render_queue, const Matrix4f &mvp);
 
   Vector3f getNormal(std::size_t x, std::size_t z);
 
@@ -58,6 +56,5 @@ public:
   float getWidth();
   float getHeight();
 
-  std::vector<RenderPacket> getPackets(RenderingQueue *render_queue,
-                                       IUniformNode *uniforms);
+  void createRenderPackets(RenderingQueue &render_queue, const Camera &camera);
 };

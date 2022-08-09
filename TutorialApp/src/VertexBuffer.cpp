@@ -10,12 +10,7 @@ VertexBuffer::VertexBuffer() {
   glGenBuffers(1, &m_Buff);
 }
 
-void VertexBuffer::bind() const {
-
-  glBindVertexArray(m_VAO);
-
-  // glBindBuffer(GL_ARRAY_BUFFER, m_Buff);
-}
+void VertexBuffer::bind() const { glBindVertexArray(m_VAO); }
 
 void VertexBuffer::create(const void *data, const VertexLayout &vertex_layout,
                           const std::size_t vertex_count) {

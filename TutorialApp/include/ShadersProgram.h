@@ -69,7 +69,13 @@ public:
   inline void setBlendingState(BlendingState &blend) {
     m_BlendingState = blend;
   }
-  inline const BlendingState &getBlendingState() { return m_BlendingState; }
+  inline const BlendingState &getBlendingState() const {
+    return m_BlendingState;
+  }
+
+  bool operator<(const ShadersProgram &other);
+
+  bool operator!=(const ShadersProgram &other);
 
 private:
   void addShader(const char *pShaderText, GLenum ShaderType);
@@ -85,3 +91,22 @@ private:
   const char *m_Vertex_Shader = nullptr;
   const char *m_Fragment_Shader = nullptr;
 };
+
+/*struct ShaderPreprocessing
+{
+private:
+    struct BlendingFuncMap
+    {
+        BlendingFuncMap();
+        std::array<std::pair<std::string, BlendingFunc>,
+(std::size_t)BlendingFunc::Count> blending_funcs;
+    };
+
+public:
+    static BlendingFunc get_blending_func(const char* );
+//    static bool process_text(ShadersProgram&, std::stringstream&,
+ResourceManager&, std::set<std::string>&, std::string& out);
+ //   static bool process_line(ShadersProgram&, const std::string& line,
+ResourceManager&, std::set<std::string>&, std::string& out);
+};
+*/

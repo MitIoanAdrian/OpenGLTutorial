@@ -9,8 +9,6 @@ struct VertexAttribute {
   const char *type;
 
   std::size_t number_of_floats;
-
-  // std::size_t offset;
 };
 
 class VertexLayout {

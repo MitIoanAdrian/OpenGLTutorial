@@ -7,8 +7,6 @@
 #include <unordered_map>
 #include <vector>
 
-// make strings references
-
 ResourceManager::ResourceManager() {}
 
 void ResourceManager::load_shaders(const std::string name,

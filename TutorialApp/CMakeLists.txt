@@ -18,7 +18,6 @@ add_executable(
 	include/AttributeHelper.h
 	include/ModelTrans.h
 	include/Camera.h
-	include/CameraController.h
 	include/UniformHelper.h
 	include/IndexBuffer.h
 	include/stb_image.h
@@ -42,7 +41,6 @@ add_executable(
 	src/AttributeHelper.cpp
 	src/ModelTrans.cpp
 	src/Camera.cpp
-	src/CameraController.cpp
 	src/math_3d.cpp
 	src/ogldev_util.cpp
 	src/UniformHelper.cpp

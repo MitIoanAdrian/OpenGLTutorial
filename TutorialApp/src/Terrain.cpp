@@ -1,6 +1,7 @@
 #include <Terrain.h>
 
 #include <AttributeHelper.h>
+#include <Camera.h>
 #include <IndexBuffer.h>
 #include <RenderingQueue.h>
 #include <ResourceManager.h>
@@ -90,10 +91,11 @@ void Terrain::generateTerrain() {
   for (std::size_t y = 0; y < m_Height; y++)
     for (std::size_t x = 0; x < m_Width; x++) {
 
-      float map_height = m_hMap->getHeight(x, y);
+      float map_height = m_hMap->getHeight(x, y) * 0.3;
 
       Vertex v;
-      v.position = Vector3f{(float)x, (float)y, map_height};
+      v.position =
+          Vector3f{(float)x * m_Step, (float)y * m_Step, map_height * m_Step};
       v.UV = Vector2f{float(x) / m_Width, float(y) / m_Height};
       v.normal = getNormal(x, y);
       vertices.push_back(v);
@@ -118,8 +120,11 @@ void Terrain::generateWater() {
   float width = m_Width * m_Step;
   float height = m_Height * m_Step;
 
-  float vertices[] = {0.0f,         0.0f, 0.0f,         (float)height,
-                      (float)width, 0.0f, (float)width, (float)height};
+  float vertices[] = {0.0f,          0.0f,         0.0f,
+                      (float)height, (float)width, 0.0f,
+                      (float)width,  (float)height
+
+  };
 
   uint32_t indices[] = {0, 1, 2, 1, 2, 3};
 
@@ -127,8 +132,8 @@ void Terrain::generateWater() {
   m_WaterIndBuff->create(*m_WaterVerBuff, indices, 6);
 }
 
-RenderPacket Terrain::createTerrainPacket(RenderingQueue *render_queue,
-                                          IUniformNode *uniforms) {
+void Terrain::createTerrainPacket(RenderingQueue *render_queue,
+                                  const Matrix4f &mvp) {
   std::size_t topology_size = 3;
 
   auto *tex = render_queue->create_texture(
@@ -150,14 +155,15 @@ RenderPacket Terrain::createTerrainPacket(RenderingQueue *render_queue,
   packet.primitive_start = 0;
   packet.primitive_end = m_iBuff->getSize() / topology_size;
   packet.first_texture = tex;
-  packet.first_uniform = uniforms;
+  packet.first_uniform = render_queue->create_uniform(
+      nullptr, UniformHelper::UniformType::kMVP, mvp);
 
-  return packet;
+  render_queue->push_rendering_packet(packet);
 }
 
-RenderPacket Terrain::createWaterPacket(RenderingQueue *render_queue,
-                                        IUniformNode *uniforms) {
-std:;
+void Terrain::createWaterPacket(RenderingQueue *render_queue,
+                                const Matrix4f &mvp) {
+
   size_t topology_size = 3;
 
   RenderPacket packet;
@@ -168,20 +174,16 @@ std:;
   packet.primitive_start = 0;
   packet.primitive_end = m_WaterIndBuff->getSize() / topology_size;
   packet.first_texture = nullptr;
-  packet.first_uniform = uniforms;
-
-  return packet;
+  packet.first_uniform = render_queue->create_uniform(
+      nullptr, UniformHelper::UniformType::kMVP, mvp);
+  render_queue->push_rendering_packet(packet);
 }
 
-std::vector<RenderPacket> Terrain::getPackets(RenderingQueue *render_queue,
-                                              IUniformNode *uniforms) {
-  std::vector<RenderPacket> packets;
+void Terrain::createRenderPackets(RenderingQueue &render_queue,
+                                  const Camera &camera) {
 
-  auto terrain_packet = createTerrainPacket(render_queue, uniforms);
-  auto water_packet = createWaterPacket(render_queue, uniforms);
+  Matrix4f mvp = camera.getProjectionMatrix() * camera.getViewMatrix();
 
-  packets.push_back(terrain_packet);
-  packets.push_back(water_packet);
-
-  return packets;
+  createTerrainPacket(&render_queue, mvp);
+  createWaterPacket(&render_queue, mvp);
 }

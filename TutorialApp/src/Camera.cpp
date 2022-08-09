@@ -16,24 +16,34 @@ void Camera::LookAt(float x, float y, float z) {
 
 void Camera::onYaw(float rad) { m_yaw += rad; }
 
-void Camera::onPitch(float rad) {
-  const float half_pi = 89.0f;
-  m_pitch = rad;
+void Camera::onPitch(float rad) { m_pitch += rad; }
 
-  if (m_pitch > half_pi)
-    m_pitch = half_pi;
+void Camera::moveUp(const double speed) { m_LookAt.z += 100.0f * speed; }
 
-  if (m_pitch < -half_pi)
-    m_pitch = -half_pi;
+void Camera::moveSide(const double speed) {
+  Vector3f dir{0.0f, 1.0f, 0.0f};
+
+  dir.Rotate(m_yaw, {0.0f, 0.0f, 1.0f});
+
+  m_LookAt += (dir * speed) * 1000.0f;
 }
 
+void Camera::moveForward(const double speed) {
+  Vector3f dir{1.0f, 0.0f, 0.0f};
+
+  dir.Rotate(m_pitch, {0.0f, 1.0f, 0.0f});
+  dir.Rotate(m_yaw, {0.0f, 0.0f, 1.0f});
+
+  dir.z = 0;
+  dir.Normalize();
+  m_LookAt += dir * speed * 1000.0f;
+}
 void Camera::updateCamera() {
   Vector3f dir{1.0f, 0.0f, 0.0f};
 
-  dir.Rotate(m_pitch, (0.0f, 1.0f, 0.0f));
-  dir.Rotate(m_yaw, (0.0f, 0.0f, 1.0f));
+  dir.Rotate(m_pitch, {0.0f, 1.0f, 0.0f});
+  dir.Rotate(m_yaw, {0.0f, 0.0f, 1.0f});
   m_View.InitCameraTransform(m_LookAt + dir * m_Distance, m_LookAt, m_up);
-  // m_View.InitCameraTransform(Vector3f{ 0.0f, 0.0f, 10.0f }, m_LookAt, m_up);
 }
 
 const Matrix4f &Camera::getViewMatrix() const { return m_View; }

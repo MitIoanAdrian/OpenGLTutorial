@@ -61,11 +61,12 @@ void RenderingQueue::clear() {
 }
 
 void RenderingQueue::draw_all() {
-  std::sort(m_Packets.begin(), m_Packets.end(), RenderPacket::compare);
+  // std::sort(m_Packets.begin(), m_Packets.end(), RenderPacket::compare);
 
   VertexBuffer *current_vbo = nullptr;
   IndexBuffer *current_ibo = nullptr;
   ShadersProgram *active_shader = nullptr;
+  BlendingState active_blending_state;
   uint64_t bound_textures_hash = 0;
 
   for (const auto &packet : m_Packets) {
@@ -88,6 +89,16 @@ void RenderingQueue::draw_all() {
 
     if (packet.first_uniform != nullptr)
       set_uniforms(active_shader, packet.first_uniform, packet.first_texture);
+
+    if (packet.shader->getBlendingState().enabled !=
+        active_blending_state.enabled) {
+      active_blending_state = packet.shader->getBlendingState();
+      if (active_blending_state.enabled) {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+      } else
+        glDisable(GL_BLEND);
+    }
 
     if (packet.ibuff != nullptr) {
       if (current_ibo != packet.ibuff) {

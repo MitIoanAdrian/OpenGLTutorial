@@ -3,6 +3,9 @@
 bool RenderPacket::compare(RenderPacket const &packet1,
                            RenderPacket const &packet2) {
 
+  if (packet1.shader != packet2.shader)
+    return *(packet1.shader) < *(packet2.shader);
+
   if (packet1.priority != packet2.priority)
     return packet1.priority > packet2.priority;
 

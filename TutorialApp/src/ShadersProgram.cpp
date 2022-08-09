@@ -53,6 +53,13 @@ std::string readFile(const char *file) {
   return toread;
 }
 
+bool ShadersProgram::operator<(const ShadersProgram &other) {
+  if (this->m_BlendingState != other.m_BlendingState) {
+    return this->m_BlendingState < other.m_BlendingState;
+  }
+  return this < &other;
+}
+
 void ShadersProgram::addShader(const char *pShaderText, GLenum ShaderType) {
   GLuint ShaderObj = glCreateShader(ShaderType);
 
@@ -97,11 +104,6 @@ void ShadersProgram::link() {
     fprintf(stderr, "Error linking shader program: '%s'\n", ErrorLog);
     exit(1);
   }
-
-  // m_uOffsetLocation = glGetUniformLocation(m_Shader_Program, "gWorld");
-  // if (m_uOffsetLocation == -1) {
-  //   printf("Error getting uniform location of 'uOffset'\n");
-  // }
 }
 
 const char *

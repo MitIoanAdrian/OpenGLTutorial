@@ -26,6 +26,9 @@ void main(){
 	vec4 terrain = mix(snow, rock2, splat.b);
 	terrain = mix(terrain, rock1, splat.g);
 	terrain = mix(terrain, grass, splat.r);
-
+	float ndl = dot(FragNormal, normalize(vec3(1.0))) * 0.5 + 0.5;
+	
 	FragColor = vec4(terrain);
+	FragColor.rgb = FragColor.rgb * ndl;
+	//FragColor.rgb = FragColor.rgb * 0.001 + splat.rgb;
 }
